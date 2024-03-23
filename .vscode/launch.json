@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "PrototypeApplication",
+            "request": "launch",
+            "mainClass": "sanienterprise.prototype.PrototypeApplication",
+            "projectName": "prototype"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PrototypeApplication<prototype>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanienterprise.prototype.prototype.PrototypeApplication",
+            "projectName": "prototype",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

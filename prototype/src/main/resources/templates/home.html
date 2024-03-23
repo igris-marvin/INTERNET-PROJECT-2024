@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home Page</title>
+        <link th:href="@{/styling/styles.css}" rel="stylesheet">
+    </head>
+        <div>
+            <img th:src="@{/images/logo.jpg}" />
+        </div>
+        <div>
+            <h1>
+                Welcome to SaniEnterprise
+            </h1>
+        </div>
+        <div>
+            <h6>Categories</h6>
+            
+            <a th:href="@{/items}">
+                <p>
+                    Seating ->
+                </p>
+            </a>
+        </div>
+    <body>
+    </body>
+</html>
