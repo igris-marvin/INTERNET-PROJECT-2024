@@ -3,6 +3,8 @@
     padding: 2px;
     border: 0px;
     letter-spacing: 0px;
+    text-decoration: none;
+    text-transform: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: aliceblue;
 }
