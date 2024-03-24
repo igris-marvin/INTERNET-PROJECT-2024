@@ -13,11 +13,12 @@
             <h1>Results Page</h1>
         </div>
 
-        <div th:object="${product}">
-            <div>
-                <img th:src="@{${product.imgLink}}" height="50px" width="80px"/>
-                <p th:text="${product.name}">PRODUCT NAME</p>
-                <p th:text="${product.price}">PRODUCT PRICE</p>
+        <div th:object="${productList}">
+            <div th:each="prod : ${productList}">
+                <img th:src="@{${prod.imgLink}}" height="150px" width="250px"/>
+                
+                <b><p th:text="${prod.name}">PRODUCT NAME</p></b>
+                <p th:text="${prod.price}">PRODUCT PRICE</p>
             </div>
         </div>
     </body>
