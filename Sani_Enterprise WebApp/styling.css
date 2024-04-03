@@ -1,0 +1,18 @@
+/* 
+    Multi-step form css
+*/
+
+#form_1 {
+    visibility: visible;
+    position: fixed;
+}
+
+#form_2 {
+    visibility: hidden;
+    position: fixed;
+}
+
+#form_3 {
+    visibility: hidden;
+    position: fixed;
+}

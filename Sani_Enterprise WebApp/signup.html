@@ -4,56 +4,104 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link th:href="" rel="stylesheet" type="text/css">
-        <title></title>
+        <link href="styling.css" rel="stylesheet" type="text/css">
+        <title>Sign Up</title>
     </head>
     
     <body>
         <div>
-            <form action="" method="POST">
-                <fieldset personalinformation>
+            <form>
+                <fieldset id="form_1">
+                    <legend>Personal Information</legend>
                     <table>
                         <tr>
                             <td>Name: </td>
-                            <td></td>
+                            <td><input type="text" placeholder="John"></td>
                         </tr>
                         <tr>
                             <td>Surname: </td>
-                            <td></td>
+                            <td><input type="text" placeholder="Tucker"></td>
                         </tr>
                         <tr>
-                            <td>ID Numeber: </td>
-                            <td></td>
+                            <td>ID Number: </td>
+                            <td><input type="text" placeholder="SA ID"></td>
                         </tr>
                     </table>
+
+                    <button type="reset">Clear</button>
+                    <button type="button" id="next_1">Next</button>
                 </fieldset>
 
-                <fieldset contactinformation>
-                    <tr>
-                        <td>Email: </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Phone Number: </td>
-                    </tr>
+                <fieldset id="form_2">
+                    <legend>Contact Information</legend>
+                    <table>
+                        <tr>
+                            <td>Email: </td>
+                            <td><input type="email" placeholder="example@easymail.com"></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Number: </td>
+                            <td><input type="text" placeholder="0110110110"></td>
+                        </tr>
+                    </table>
+
+                    <button type="button" id="prev_1">Previous</button>
+                    <button type="button" id="next_2">Next</button>
                 </fieldset>
 
-                <fieldset accountinformation>
-                    <tr>
-                        <td>Display Name: </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Password: </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Confirm Password: </td>
-                        <td></td>
-                    </tr>
+                <fieldset id="form_3">
+                    <legend>Account Information</legend>
+                    <table>
+                        <tr>
+                            <td>Display Name: </td>
+                            <td><input type="text" placeholder="HypeMaster65"></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td>
+                            <td><input type="password"></td>
+                        </tr>
+                        <tr>
+                            <td>Confirm Password: </td>
+                            <td><input type="password"></td>
+                        </tr>
+                    </table>
+
+                    <button type="button" id="prev_2">Previous</button>
+                    <button type="submit">Sign Up</button>
                 </fieldset>
             </form>
         </div>
+
+        <script>
+            var form1 = document.getElementById("form_1");
+            var form2 = document.getElementById("form_2");
+            var form3 = document.getElementById("form_3");
+
+            var next1 = document.getElementById("next_1");
+            var next2 = document.getElementById("next_2");
+            var prev1 = document.getElementById("prev_1");
+            var prev2 = document.getElementById("prev_2");
+
+            next1.onclick = function() {
+                form1.style.visibility = "hidden";
+                form2.style.visibility = "visible";
+            }
+
+            next2.onclick = function() {
+                form2.style.visibility = "hidden";
+                form3.style.visibility = "visible";
+            }
+            
+            prev1.onclick = function() {
+                form1.style.visibility = "visible";
+                form2.style.visibility = "hidden";
+            }
+
+            prev2.onclick = function() {
+                form2.style.visibility = "visible";
+                form3.style.visibility = "hidden";
+            }
+            
+        </script>
     </body>
 </html>
