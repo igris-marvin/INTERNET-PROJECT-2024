@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html></html>
     <head>
         <meta charset="utf-8">
         <meta name="description" content="">
@@ -13,13 +13,16 @@
             <h1>Results Page</h1>
         </div>
 
-        <div th:object="${productList}">
-            <div th:each="prod : ${productList}">
-                <img th:src="@{${prod.imgLink}}" height="150px" width="250px"/>
-                
-                <b><p th:text="${prod.name}">PRODUCT NAME</p></b>
-                <p th:text="${prod.price}">PRODUCT PRICE</p>
+
+        <#list productList as prods>
+            <div>
+                <div>
+                    <img th:src="${prods.imgLink}" height="150px" width="250px"/>
+                    
+                    <b><p>${prods.name}</p></b>
+                    <p>${prods.price}</p>
+                </div>
             </div>
-        </div>
+        </#list>
     </body>
 </html>
