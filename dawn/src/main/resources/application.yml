@@ -1,0 +1,29 @@
+server:
+    port: 9898
+
+spring:
+    application:
+        name: dawn
+    datasource:
+        url: jdbc:mariadb://localhost:3308/sanienterprisedb
+        username: root
+        password: 123
+        driver-class-name: org.mariadb.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+            show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MariaDBDialect
+                format_sql: true
+
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+                type:
+                    descriptor:
+                        sql:
+                            BasicBinder: TRACE
