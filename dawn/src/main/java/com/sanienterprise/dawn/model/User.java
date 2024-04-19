@@ -43,5 +43,5 @@ public abstract class User {
     private String email;
     
     @Column(nullable = false, length = 20)
-    private Long contact_number;
+    private String contact_number;
 }

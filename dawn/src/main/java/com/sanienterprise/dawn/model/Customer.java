@@ -32,13 +32,13 @@ public class Customer extends User  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private Integer age;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private char gender;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private Date birth_date;
 
     @Column(nullable = false, length = 20)

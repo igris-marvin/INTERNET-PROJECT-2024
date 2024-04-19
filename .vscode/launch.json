@@ -16,6 +16,16 @@
             "projectName": "prototype",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DawnApplication<dawn>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanienterprise.dawn.DawnApplication",
+            "projectName": "dawn",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

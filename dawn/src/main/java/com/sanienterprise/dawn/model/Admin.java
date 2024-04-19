@@ -39,7 +39,7 @@ public class Admin extends User {
     @Column(nullable = false, length = 225)
     @Enumerated(value = EnumType.STRING)
     private Permission permissions;
-
+    
     public enum Permission {
         READ_ONLY, READ_WRITE;
     }
