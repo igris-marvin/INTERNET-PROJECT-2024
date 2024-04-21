@@ -1,14 +1,19 @@
 package com.sanienterprise.dawn.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +24,20 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @AllArgsConstructor
 @NoArgsConstructor
-public class Wishlist {
+public class Wishlist implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer wishlist_id;
 
-    @Column(nullable = true)
-    @OneToMany
-    private Product product_id;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Product> product_id;
+
+    // -- REFERENCING OBJECT
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "wishlist")
+    private Account account;
+
+    public Wishlist(List<Product> product_id) {
+        this.product_id = product_id;
+    }
 }

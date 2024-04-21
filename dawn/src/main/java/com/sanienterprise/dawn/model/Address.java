@@ -1,20 +1,26 @@
 package com.sanienterprise.dawn.model;
 
+import java.io.Serializable;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @DynamicInsert
 @DynamicUpdate
-public class Address {
+@NoArgsConstructor
+public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +30,34 @@ public class Address {
     private String street;
     
     @Column(nullable = false, length = 50)
+    private String surburb;
+    
+    @Column(nullable = false, length = 50)
     private String city;
     
     @Column(nullable = false, length = 50)
     private String province;
     
-    @Column(nullable = false, length = 50)
-    private String surburb;
-    
     @Column(nullable = false, length = 4)
-    private Integer zip_code;
+    private String zip_code;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
+    private Customer customer;
+
+    public Address(
+        String street, 
+        String surburb, 
+        String city, 
+        String province, 
+        String zip_code
+    ) {
+
+        this.street = street;
+        this.surburb = surburb;
+        this.city = city;
+        this.province = province;
+        this.zip_code = zip_code;
+    }
+
+    
 }

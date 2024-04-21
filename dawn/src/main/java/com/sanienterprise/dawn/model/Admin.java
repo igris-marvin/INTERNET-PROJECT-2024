@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.model;
 
+import java.io.Serializable;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -8,9 +10,6 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,22 +24,26 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorValue(value = "ADMIN")
 public class Admin extends User {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private String admin_username;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = true, length = 20)
     private String admin_password;
 
-    @Column(nullable = false, length = 225)
+    @Column(nullable = true, length = 225)
     @Enumerated(value = EnumType.STRING)
     private Permission permissions;
     
     public enum Permission {
         READ_ONLY, READ_WRITE;
+    }
+
+    public Admin(String id_number, String name, String surname, String email, String contact_number,
+            String admin_username, String admin_password, Permission permissions) {
+        super(id_number, name, surname, email, contact_number);
+        this.admin_username = admin_username;
+        this.admin_password = admin_password;
+        this.permissions = permissions;
     }
 }

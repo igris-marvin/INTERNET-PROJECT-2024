@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.model;
 
+import java.io.Serializable;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image {
+public class Image implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +29,12 @@ public class Image {
     @Column(nullable = false, length = 100)
     private String imageName;
 
-    @Column(columnDefinition = "BLOB", nullable = false)
+    @Column(columnDefinition = "LONGBLOB", nullable = true)
     private byte[] image_source;
+
+    public Image(String imageName, byte[] image_source) {
+        this.imageName = imageName;
+        this.image_source = image_source;
+    }
+
 }

@@ -10,28 +10,8 @@
     <h1>Sign Up</h1>
 
     <div>
-        <form th:object="${customer}">
-            <table method="POST">
-                <tr>
-                    <td>ID Number: </td>
-                    <td><input type="number" th:field="*{id_number}"></td>
-                </tr>
-                <tr>
-                    <td>Name: </td>
-                    <td><input type="text" th:field="*{name}"></td>
-                </tr>
-                <tr>
-                    <td>Surname: </td>
-                    <td><input type="text" th:field="*{surname}"></td>
-                </tr>
-                <tr>
-                    <td>Email: </td>
-                    <td><input type="email" th:field="*{email}"></td>
-                </tr>
-                <tr>
-                    <td>Contact Number: </td>
-                    <td><input type="number" th:field="*{contact_number}"></td>
-                </tr>
+        <form th:action="@{/user/signup}" method="POST">
+            <table>
                 <tr>
                     <td colspan="2"><input type="submit" value="SUBMIT"></td>
                 </tr>
