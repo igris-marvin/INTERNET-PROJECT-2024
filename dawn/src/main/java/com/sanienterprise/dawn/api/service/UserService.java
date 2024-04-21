@@ -223,39 +223,4 @@ public class UserService {
         return imageBytes;
     }
 
-// -- GET BYTE[] FROM DATABASE AND CONVERT INTO AN IMAGE --
-
-/* 
-    import java.awt.image.BufferedImage;
-    import java.io.ByteArrayInputStream;
-    import java.io.File;
-    import java.io.IOException;
-    import javax.imageio.ImageIO;
-
-    public class ByteToImageExample {
-        public static void main(String[] args) {
-            // Assuming you have a byte array representing an image
-            byte[] imageData = getImageDataFromDatabase(); // Replace this with your byte array
-
-            // Convert byte array to BufferedImage
-            try (ByteArrayInputStream bis = new ByteArrayInputStream(imageData)) {
-                BufferedImage image = ImageIO.read(bis);
-
-                // Write BufferedImage to file
-                File output = new File("output.jpg"); // Change the file extension according to the image format
-                ImageIO.write(image, "jpg", output); // Change the format according to the actual image format
-
-                System.out.println("Image successfully written to file: " + output.getAbsolutePath());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Dummy method to simulate fetching image data from database
-        private static byte[] getImageDataFromDatabase() {
-            // Replace this with actual logic to fetch image data from your database
-            return new byte[]{ Your byte array representing the image };
-        }
-    } */
-
 }
