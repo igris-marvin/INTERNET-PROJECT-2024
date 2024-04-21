@@ -1,4 +1,4 @@
-package com.sanienterprise.dawn.data;
+package com.sanienterprise.dawn.persistence.repository;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.sanienterprise.dawn.model;
+package com.sanienterprise.dawn.persistence.entity;
 
 import java.io.Serializable;
 

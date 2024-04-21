@@ -1,19 +1,15 @@
-package com.sanienterprise.dawn.model;
+package com.sanienterprise.dawn.persistence.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,17 +20,21 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-public class History implements Serializable {
-
+public class Image implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer history_id;
+    private Integer image_id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Product> product_id; //one-to-many
+    @Column(nullable = false, length = 100)
+    private String imageName;
 
-    // -- REFERENCED FROM ACCOUNT
-    
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "history")
-    private Account account;
+    @Column(columnDefinition = "LONGBLOB", nullable = true)
+    private byte[] image_source;
+
+    public Image(String imageName, byte[] image_source) {
+        this.imageName = imageName;
+        this.image_source = image_source;
+    }
+
 }

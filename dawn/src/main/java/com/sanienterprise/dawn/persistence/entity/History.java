@@ -1,4 +1,4 @@
-package com.sanienterprise.dawn.model;
+package com.sanienterprise.dawn.persistence.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,27 +24,17 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart implements Serializable {
+public class History implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cart_id;
+    private Integer history_id;
 
-    // List<Product> prod_id
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Product> products;
+    private List<Product> product_id; //one-to-many
 
-    // -- REFERENCED OBJECT
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cart")
+    // -- REFERENCED FROM ACCOUNT
+    
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "history")
     private Account account;
-
-    // --
-
-    public Cart(
-        List<Product> products
-    ) {
-        this.products = products;
-    }
-
 }
