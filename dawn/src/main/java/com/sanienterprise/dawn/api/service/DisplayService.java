@@ -1,6 +1,7 @@
 package com.sanienterprise.dawn.api.service;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,10 @@ public class DisplayService {
     }
 
     public String getImage() {
-        Image image = imgRepo.findById(1).get();
+        Image image = new Image();
+        List<Image> images = imgRepo.findAll();
+
+        image = images.get(images.size() - 1);
 
         byte[] image_bytes = image.getImage_source();
 
