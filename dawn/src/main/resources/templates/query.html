@@ -8,14 +8,17 @@
   </head>
   <body>
     <h1>Update</h1>
-
-    <div>
-        <h3 th:text="${imagename}"></h3>
-        <img width="200px" height="300px" align="center" th:src="'data:image/png;base64,' + ${imagesource}" alt="updating image" class="img-fluid"/>
-    </div>
 	
     <form method="POST" enctype="multipart/form-data">
         <table>
+            <tr>
+                <td>Select image id to modify</td>
+                <td>
+                  <select name="update_id" required>
+                        <option th:each="x : ${image_ids}" th:value="${x}" th:text="${x}"></option>
+                  </select>
+                </td>
+            </tr>
             <tr>
                 <td>Image Name: </td>
                 <td><input type="text" name="update_name"></td>

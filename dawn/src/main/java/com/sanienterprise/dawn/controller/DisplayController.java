@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanienterprise.dawn.api.service.DisplayService;
 
@@ -21,9 +22,15 @@ public class DisplayController {
     }
 
     @GetMapping
-    public String getDisplay(Model model) {
+    public String getDisplay(
+        Model model,
+        @RequestParam("id") Integer id
+    ) {
+        if(id == null) {
+            id = 1;
+        }
 
-        String image = dispServ.getImage(1);
+        String image = dispServ.getImage(id);
 
         System.out.println("Image: " + image);
 

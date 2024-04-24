@@ -1,6 +1,7 @@
 package com.sanienterprise.dawn.controller;
 
 import java.util.Base64;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,31 +24,12 @@ public class QueryController {
     public QueryController(ImageService imgServ) {
         this.imgServ = imgServ;
     }
+    
+    @ModelAttribute(name = "image_ids")
+    public List<Integer> getAllIds() {
+        List<Integer> list = imgServ.getAllIds();
 
-    @ModelAttribute(name = "imagename")
-    public String getImageName() {
-        String imageName = imgServ.getImage(1).getImageName();
-        return imageName;
-    }
-
-    @ModelAttribute(name = "imagesource")
-    public String getImageSource() {
-        String imageSource = Base64
-                                .getEncoder()
-                                .encodeToString(
-                                    imgServ
-                                        .getImage(1)
-                                        .getImage_source()
-                                );
-
-        return imageSource;
-    }
-
-    @ModelAttribute(name = "image_object")
-    public Image getImage() {
-        Image image = imgServ.getImage(1);
-
-        return image;
+        return list;
     }
     
     @GetMapping
@@ -57,20 +39,20 @@ public class QueryController {
 
     @PostMapping
     public String posQuery(
-        @RequestParam(name = "update_name") String image_name,
-        @RequestParam(name = "update_image") MultipartFile file,
-        @ModelAttribute(name = "image_object") Image image
+        @RequestParam("update_id") Integer id,
+        @RequestParam("update_name") String name,
+        @RequestParam("update_image") MultipartFile file
     ) {
-        boolean flag = imgServ.updateImage(image_name, file, image);
+        boolean flag = imgServ.updateImageById(id, name, file);
 
-        String msg = "Image not updated";
+        String msg = "row not updated!";
 
         if(flag) {
-            msg = "Image updated!";
+            msg = "row updated!";
         }
 
-        System.out.println("Message: " + msg);
+        System.out.println("MSG: " + msg);
 
-        return "redirect:/display";
+        return "redirect:/display?id=" + id;
     }
 }

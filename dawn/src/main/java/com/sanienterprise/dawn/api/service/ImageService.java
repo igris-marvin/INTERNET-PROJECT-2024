@@ -1,6 +1,7 @@
 package com.sanienterprise.dawn.api.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +22,7 @@ public class ImageService {
         Image image = new Image();
 
         image.setImageName("uploaded image");
+
         try {
             image.setImage_source(file.getBytes());
 
@@ -35,30 +37,35 @@ public class ImageService {
     }
 
     public Image getImage(int i) {
-        boolean flag  = imgRepo.existsById(i);
-
-        System.out.println("FLAG 2: " + flag);
 
         Image image = imgRepo.findById(i).get();
 
         return image;
     }
 
-    public boolean updateImage(
-        String image_name, 
-        MultipartFile file, 
-        Image image
+    public List<Integer> getAllIds() {
+        List<Integer> list = imgRepo.findAllId();
+
+        return list;
+    }
+
+    public boolean updateImageById(
+        Integer id, 
+        String name, 
+        MultipartFile file
     ) {
         boolean flag = false;
 
-        image.setImageName(image_name);
         try {
-            image.setImage_source(file.getBytes());
-            
-            if(imgRepo.save(image) != null) {
+            byte[] source = file.getBytes();
+
+            int num_of_affected_rows = imgRepo.updateImageById(name, source, id);
+
+            if(num_of_affected_rows == 1) {
                 flag = true;
             }
         } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
