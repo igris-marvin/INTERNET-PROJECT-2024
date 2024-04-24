@@ -33,4 +33,35 @@ public class ImageService {
 
         return false;
     }
+
+    public Image getImage(int i) {
+        boolean flag  = imgRepo.existsById(i);
+
+        System.out.println("FLAG 2: " + flag);
+
+        Image image = imgRepo.findById(i).get();
+
+        return image;
+    }
+
+    public boolean updateImage(
+        String image_name, 
+        MultipartFile file, 
+        Image image
+    ) {
+        boolean flag = false;
+
+        image.setImageName(image_name);
+        try {
+            image.setImage_source(file.getBytes());
+            
+            if(imgRepo.save(image) != null) {
+                flag = true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
 }

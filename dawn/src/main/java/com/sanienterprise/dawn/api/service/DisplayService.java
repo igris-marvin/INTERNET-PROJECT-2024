@@ -1,12 +1,10 @@
 package com.sanienterprise.dawn.api.service;
 
 import java.util.Base64;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sanienterprise.dawn.persistence.entity.Image;
 import com.sanienterprise.dawn.persistence.repository.ImageRepository;
 
 @Service
@@ -19,15 +17,19 @@ public class DisplayService {
         this.imgRepo = imgRepo;
     }
 
-    public String getImage() {
-        Image image = new Image();
-        List<Image> images = imgRepo.findAll();
+    public String getImage(int number) {
 
-        image = images.get(images.size() - 1);
+        System.out.println("FLAG: " + imgRepo.existsById(number));
 
-        byte[] image_bytes = image.getImage_source();
-
-        String encoded_image = Base64.getEncoder().encodeToString(image_bytes);
+        String encoded_image = Base64
+                                .getEncoder()
+                                .encodeToString(
+                                    imgRepo
+                                        .findById(
+                                            number
+                                        )
+                                .get()
+                                .getImage_source());
 
         return encoded_image;
     }

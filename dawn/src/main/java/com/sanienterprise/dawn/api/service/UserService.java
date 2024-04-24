@@ -69,18 +69,15 @@ public class UserService {
 
     private Customer popCustomer() {
 
-        String mysticChair ="c:\\Users\\Marvin\\Documents\\GitHub\\INTERNET-PROJECT-2024\\dawn\\src\\main\\resources\\static\\images\\mystic-1.webp" ;
         String zen = "c:\\Users\\Marvin\\Documents\\GitHub\\INTERNET-PROJECT-2024\\dawn\\src\\main\\resources\\static\\images\\Zen_Three_Bowl_Fountain.webp";
         String aurora = "C:\\Users\\Marvin\\Documents\\GitHub\\INTERNET-PROJECT-2024\\dawn\\src\\main\\resources\\static\\images\\Aurora.webp";
         String serenity = "c:\\Users\\Marvin\\Documents\\GitHub\\INTERNET-PROJECT-2024\\dawn\\src\\main\\resources\\static\\images\\SDSTY_LR.jpg";
 
-        byte[] mysticChairBlob = null;
         byte[] zenBlob = null;
         byte[] auroraBlob = null;
         byte[] serenityBlob = null;
 
         try {
-            mysticChairBlob = convertImageToByteArray(mysticChair);
             zenBlob = convertImageToByteArray(zen);
             auroraBlob = convertImageToByteArray(aurora);
             serenityBlob = convertImageToByteArray(serenity);
@@ -90,12 +87,10 @@ public class UserService {
             e.printStackTrace();
         }
 
-        List<Image> images1 = new ArrayList<>();
         List<Image> images2 = new ArrayList<>();
         List<Image> images3 = new ArrayList<>();
         List<Image> images4 = new ArrayList<>();
 
-        images1.add(new Image("Mystic Chair Image", mysticChairBlob));
         images2.add(new Image("Zen Garden Fountain Image", zenBlob));
         images3.add(new Image("Aurora Borealis Tapestry Image", auroraBlob));
         images4.add(new Image("Serenity Aromatherapy Diffuser", serenityBlob));
@@ -115,7 +110,7 @@ public class UserService {
                 Category.CHAIR,
                 ProductStatus.COMING_SOON, 
                 Date.from(Instant.now()),
-                images1
+                images2
             )
         );
 

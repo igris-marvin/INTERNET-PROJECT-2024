@@ -23,7 +23,7 @@ public class DisplayController {
     @GetMapping
     public String getDisplay(Model model) {
 
-        String image = dispServ.getImage();
+        String image = dispServ.getImage(1);
 
         System.out.println("Image: " + image);
 
