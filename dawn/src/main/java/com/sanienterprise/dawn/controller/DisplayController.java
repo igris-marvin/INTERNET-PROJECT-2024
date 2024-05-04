@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanienterprise.dawn.api.service.DisplayService;
+import com.sanienterprise.dawn.persistence.entity.Image;
 
 @Controller
 @RequestMapping("/display")
@@ -23,18 +26,16 @@ public class DisplayController {
 
     @GetMapping
     public String getDisplay(
-        Model model,
-        @RequestParam("id") Integer id
+        Model model
     ) {
-        if(id == null) {
-            id = 1;
+
+        List<String> images = dispServ.getAllImages();
+
+        for(String image: images) {
+            System.out.println("Images " + image);
         }
 
-        String image = dispServ.getImage(id);
-
-        System.out.println("Image: " + image);
-
-        model.addAttribute("image", image);
+        model.addAttribute("images", images);
 
         return "display";
     }
