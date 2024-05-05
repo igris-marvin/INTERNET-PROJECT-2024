@@ -1,7 +1,5 @@
 package com.sanienterprise.dawn.persistence.entity;
 
-import java.io.Serializable;
-
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
