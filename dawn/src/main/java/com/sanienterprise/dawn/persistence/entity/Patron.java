@@ -25,33 +25,44 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "USER_TYPE", discriminatorType = DiscriminatorType.STRING)
-public abstract class User implements Serializable {
+@DiscriminatorColumn(name = "ROLE_TYPE", discriminatorType = DiscriminatorType.STRING)
+public abstract class Patron implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
     
-    @Column(nullable = false, length = 13, unique = true)
+    @Column(nullable = true, length = 13, unique = true)
     private String id_number;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private String name;
     
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private String surname;
     
-    @Column(nullable = false, length = 50, unique = true)
+    @Column(nullable = true, length = 50, unique = true)
     private String email;
     
-    @Column(nullable = false, length = 20)
+    @Column(nullable = true, length = 20)
     private String contact_number;
 
-    public User(String id_number, String name, String surname, String email, String contact_number) {
+    @Column(nullable = false, length = 20)
+    private String role;
+
+    public Patron(
+        String id_number, 
+        String name, 
+        String surname, 
+        String email, 
+        String contact_number, 
+        String role
+    ) {
         this.id_number = id_number;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.contact_number = contact_number;
+        this.role = role;
     }
 }

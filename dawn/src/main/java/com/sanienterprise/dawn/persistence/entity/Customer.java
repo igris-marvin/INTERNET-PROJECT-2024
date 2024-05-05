@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorValue(value = "CUSTOMER")
-public class Customer extends User {
+public class Customer extends Patron {
 
     @Column(nullable = true, length = 20)
     private Integer age;
@@ -52,15 +52,15 @@ public class Customer extends User {
         String surname, 
         String email, 
         String contact_number, 
-        Integer age,
-        char gender, 
-        Date birth_date, 
-        Date date_added,
-        Address address,
-        Account account
+        String role,
+            Integer age, 
+            char gender, 
+            Date birth_date, 
+            Date date_added, 
+            Address address, 
+            Account account
     ) {
-
-        super(id_number, name, surname, email, contact_number);
+        super(id_number, name, surname, email, contact_number, role);
         this.age = age;
         this.gender = gender;
         this.birth_date = birth_date;
