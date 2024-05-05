@@ -48,7 +48,7 @@ public class GuestController {
 
         System.out.println("encoded password: " + encoded);
 
-        patServ.addUser(username, password);
+        patServ.addUser(username, encoded);
 
         return "redirect:/user/account";
     }
