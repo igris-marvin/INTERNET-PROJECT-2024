@@ -41,7 +41,10 @@ public class SecurityConfiguration {
                 t.anyRequest().authenticated();
         })
             .formLogin(AbstractAuthenticationFilterConfigurer -> {
-                AbstractAuthenticationFilterConfigurer.loginPage("/login").permitAll();
+                AbstractAuthenticationFilterConfigurer
+                    .loginPage("/login")
+                    .successHandler(new AuthenticationSuccessHandler())
+                    .permitAll();
             })
             .build();
  	}
