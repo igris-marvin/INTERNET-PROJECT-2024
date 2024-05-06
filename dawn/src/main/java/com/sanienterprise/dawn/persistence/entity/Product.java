@@ -75,7 +75,22 @@ public class Product implements Serializable {
     private List<Image> images;
 
     public enum Category {
-        CHAIR, TABLE, BED, SOFA, CABINET, SHELVE, DESK;
+        TV_STAND, 
+        COFFEE_TABLE, 
+        CONSOLE_TABLE, 
+        OCCASIONAL_CHAIR, 
+        CARPET, 
+        DINING_SET, 
+        BAR_CHAIR,
+        LOVE_SEAT,
+        HEADBOARD,
+        PEDESSTAL,
+        DRESSING_TABLE,
+        SLEEPER_COUCH,
+        STUDY_TABLE,
+        CHEST_OF_DRAWER,
+        USED_FRIDGE,
+        BATHROOM_CADDY;
     }
 
     public Product(
