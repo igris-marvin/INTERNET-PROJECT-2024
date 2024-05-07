@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Shopping Cart</h1>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cart">
+                    <table class="table" id="cartTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Items will be dynamically added here -->
+                        </tbody>
+                    </table>
+                    <button id="addItem" class="btn btn-primary">Add Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            var itemCount = 0;
+
+            $('#addItem').click(function() {
+                itemCount++;
+                $('#cartTable tbody').append('<tr><th scope="row">' + itemCount + '</th><td>Product ' + itemCount + '</td><td>$10</td><td>1</td><td>$10</td><td><button class="btn btn-danger removeItem">Remove</button></td></tr>');
+            });
+
+            $(document).on('click', '.removeItem', function() {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+</html>
