@@ -9,6 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -47,8 +49,9 @@ public abstract class Patron implements Serializable {
     @Column(nullable = true, length = 20)
     private String contact_number;
 
-    @Column(nullable = false, length = 20)
-    private String role;
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
     public Patron(
         String id_number, 
@@ -56,7 +59,7 @@ public abstract class Patron implements Serializable {
         String surname, 
         String email, 
         String contact_number, 
-        String role
+        Role role
     ) {
         this.id_number = id_number;
         this.name = name;
@@ -64,5 +67,9 @@ public abstract class Patron implements Serializable {
         this.email = email;
         this.contact_number = contact_number;
         this.role = role;
+    }
+
+    public enum Role {
+        CUSTOMER, ADMIN;
     }
 }

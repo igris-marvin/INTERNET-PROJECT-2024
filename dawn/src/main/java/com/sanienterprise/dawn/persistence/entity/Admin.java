@@ -33,7 +33,7 @@ public class Admin extends Patron {
         String surname, 
         String email, 
         String contact_number, 
-        String role,
+        Role role,
             String admin_username, 
             String admin_password
     ) {

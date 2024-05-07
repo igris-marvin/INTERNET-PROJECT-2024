@@ -27,9 +27,9 @@ public class AuthenticationSuccessHandler extends SavedRequestAwareAuthenticatio
                                     .equals("ROLE_ADMIN")
                             );
         if(isAdmin) {
-            setDefaultTargetUrl("/admin/home"); //set default admin pag after admin logs in
+            setDefaultTargetUrl("/admin/home"); //set default redirect admin page pag after admin logs in
         } else {
-            setDefaultTargetUrl("/user/account"); //set default page after customer logs in
+            setDefaultTargetUrl("/user/account"); //set default redirect page after customer logs in
         }
 
         super.onAuthenticationSuccess(request, response, authentication);

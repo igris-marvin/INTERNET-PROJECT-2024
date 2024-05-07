@@ -11,6 +11,8 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,6 +38,7 @@ public class Customer extends Patron {
     private Date birth_date;
 
     @Column(nullable = true, length = 20)
+    @Temporal(value = TemporalType.TIMESTAMP)
     private Date date_added;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -52,7 +55,7 @@ public class Customer extends Patron {
         String surname, 
         String email, 
         String contact_number, 
-        String role,
+        Role role,
             Integer age, 
             char gender, 
             Date birth_date, 
