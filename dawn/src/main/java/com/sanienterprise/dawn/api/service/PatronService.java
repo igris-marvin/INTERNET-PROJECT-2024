@@ -13,6 +13,7 @@ import com.sanienterprise.dawn.persistence.entity.Account;
 import com.sanienterprise.dawn.persistence.entity.Admin;
 import com.sanienterprise.dawn.persistence.entity.Customer;
 import com.sanienterprise.dawn.persistence.entity.Patron;
+import com.sanienterprise.dawn.persistence.entity.Patron.Role;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 
 @Service
@@ -50,7 +51,7 @@ public class PatronService implements UserDetailsService {
 
                     get_username = cust.getAccount().getUsername();
                     get_password = cust.getAccount().getPassword();
-                    roles = cust.getRole().split(",");
+                    roles = cust.getRole().name().split("_");
 
                 }
             } else {
@@ -62,7 +63,7 @@ public class PatronService implements UserDetailsService {
 
                     get_username = admin.getAdmin_username();
                     get_password = admin.getAdmin_password();
-                    roles = admin.getRole().split(",");
+                    roles = admin.getRole().name().split("_");
 
                 }
             }
@@ -95,7 +96,7 @@ public class PatronService implements UserDetailsService {
             null
         );
 
-        Patron patron = new Customer(null, null, null, null, null, "CUSTOMER", 0, 'M', null, null, null, account);
+        Patron patron = new Customer(null, null, null, null, null, Role.CUSTOMER, 0, 'M', null, null, null, account);
 
         patRepo.save(patron);
     }

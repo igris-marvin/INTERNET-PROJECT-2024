@@ -70,6 +70,6 @@ public abstract class Patron implements Serializable {
     }
 
     public enum Role {
-        CUSTOMER, ADMIN;
+        CUSTOMER, ADMIN, CUSTOMER_ADMIN;
     }
 }
