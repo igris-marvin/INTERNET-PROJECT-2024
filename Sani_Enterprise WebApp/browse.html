@@ -7,24 +7,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-          <% for(let i = 0; i < products.length; i++) { %>
+        <div th:each="x : ${categoryObj}" class="row"> <!-- iterate through products -->
             <div class="col-md-6">
                 <div class="card" style="width: 18rem;">
                     <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title text-center"><%= products[i].name %></h5>
-                        <p class="card-text"><%= products[i].description %></p>
+                        <h5 th:text="${x.product_name}" class="card-title text-center"></h5>
+                        <p th:text="${x.product_description}" class="card-text"></p>
                         <a href="#" class="btn btn-primary">Add Item</a>
                     </div>
                 </div>
             </div>
-            <% 
+            <!-- <% 
             if (i % 2 !== 0) { 
-                %>
+                %> -->
               </div><div class="row">
-            <% } %>
-          <% } %>
+            <!-- <% } %>
+          <% } %> -->
         </div>
       </div>
 </body>
