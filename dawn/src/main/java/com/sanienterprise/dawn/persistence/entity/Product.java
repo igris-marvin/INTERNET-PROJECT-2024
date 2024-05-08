@@ -77,25 +77,6 @@ public class Product implements Serializable {
     @JoinColumn(name = "product_id")
     private List<Image> images;
 
-    public enum Category {
-        TV_STAND, 
-        COFFEE_TABLE, 
-        CONSOLE_TABLE, 
-        OCCASIONAL_CHAIR, 
-        CARPET, 
-        DINING_SET, 
-        BAR_CHAIR,
-        LOVE_SEAT,
-        HEADBOARD,
-        PEDESSTAL,
-        DRESSING_TABLE,
-        SLEEPER_COUCH,
-        STUDY_TABLE,
-        CHEST_OF_DRAWER,
-        USED_FRIDGE,
-        BATHROOM_CADDY;
-    }
-
     public Product(
         String product_name, 
         String product_description, 
@@ -125,7 +106,49 @@ public class Product implements Serializable {
         this.images = images;
     }
 
+    public enum Category {
+        TV_STAND("TV Stand"), 
+        COFFEE_TABLE("Coffee Table"), 
+        CONSOLE_TABLE("Console Table"), 
+        OCCASIONAL_CHAIR("Occasional Chair"), 
+        CARPET("Carpet"), 
+        DINING_SET("Dining Set"), 
+        BAR_CHAIR("Bar Chair"),
+        LOVE_SEAT("Love Seat"),
+        HEADBOARD("Headboard"),
+        PEDESTAL("Pedestal"),
+        DRESSING_TABLE("Dressing Table"),
+        SLEEPER_COUCH("Sleeper Couch"),
+        STUDY_TABLE("Study Table"),
+        CHEST_OF_DRAWER("Chest of Drawer"),
+        USED_FRIDGE("Used Fridge"),
+        BATHROOM_CADDY("Bathroom Caddy");
+
+        private final String displayName;
+
+        Category(String displayName) {
+            this.displayName = displayName;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+    }
+
     public enum ProductStatus {
-        AVAILABLE, UNAVAILABLE, OUT_OF_STOCK, COMING_SOON;
+        AVAILABLE("Available"), 
+        UNAVAILABLE("Unavailable"), 
+        OUT_OF_STOCK("Out of stock"), 
+        COMING_SOON("Coming soon");
+
+        private final String displayStatus;
+
+        ProductStatus(String displayStatus) {
+            this.displayStatus = displayStatus;
+        }
+
+        public String getDisplayName() {
+            return displayStatus;
+        }
     }
 }

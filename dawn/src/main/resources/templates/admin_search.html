@@ -33,21 +33,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr th:each="product : ${products}">
                   <th scope="row"></th>
-                  <td><img style="height: 100px;"  src="https://picsum.photos/200/300.jpg"></td>
-                  <td>Coffee Table</td>
-                  <td>Kitchen</td>
-                  <td>R599.00</td>
-                  <td><a href="">Modify</a></td>
-                </tr>
-                <tr>
-                  <th scope="row"></th>
-                  <td><img style="height: 100px;" src="https://picsum.photos/200/300?random=3"></td>
-                  <td>Chair</td>
-                  <td>Office</td>
-                  <td>R1499.00</td>
-                  <td><a href="">Modify</a></td>
+                  <td><img style="height: 100px;" th:src="${product.image}"></td>
+                  <td th:text="${product.name}">!EMPTY</td>
+                  <td th:text="${product.category}">!EMPTY</td>
+                  <td th:text="${product.price}">!EMPTY</td>
+                  <td><a th:href="@{/admin/modify(id=${product_id})}">Modify</a></td>
                 </tr>
               </tbody>
             </table>

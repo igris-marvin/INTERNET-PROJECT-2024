@@ -18,12 +18,6 @@ public class GuestController {
     private PatronService patServ;
     private PasswordEncoder passEnc;
 
-    @Autowired
-    public GuestController(PatronService patServ, PasswordEncoder passEnc) {
-        this.patServ = patServ;
-        this.passEnc = passEnc;
-    }
-
     //LOGIN
     @GetMapping("/login")
     public String getLogin() {
