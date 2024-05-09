@@ -15,5 +15,6 @@
             "username": "root",
             "name": "maridb connection"
         }
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
