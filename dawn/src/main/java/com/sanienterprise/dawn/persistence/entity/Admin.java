@@ -27,18 +27,6 @@ public class Admin extends Patron {
     @Column(nullable = true, length = 255)
     private String admin_password;
 
-    public Admin(
-        String id_number, 
-        String name, 
-        String surname, 
-        String email, 
-        String contact_number, 
-        Role role,
-            String admin_username, 
-            String admin_password
-    ) {
-        super(id_number, name, surname, email, contact_number, role);
-        this.admin_username = admin_username;
-        this.admin_password = admin_password;
-    }
+    @Column(nullable = true, columnDefinition = "LONGBLOB")
+    private byte[] admin_image;
 }

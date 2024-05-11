@@ -92,7 +92,6 @@ public class PatronService implements UserDetailsService {
             password, 
             null, 
             null, 
-            null, 
             null
         );
 

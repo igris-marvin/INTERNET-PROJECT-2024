@@ -37,10 +37,6 @@ public class Account implements Serializable {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @Column(nullable = false, length = 20)
-    @Enumerated(value = EnumType.STRING)
-    private AccountStatus status;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_wishlist_id")
     private Wishlist wishlist;
@@ -60,14 +56,9 @@ public class Account implements Serializable {
 
     // --
 
-    public enum AccountStatus {
-        ACTIVE, INACTIVE, SUSPENDED, PENDING_ACTIVATION, LOCKED;
-    }
-
     public Account(
         String username, 
         String password, 
-        AccountStatus status, 
         Wishlist wishlist, 
         Cart cart,
         History history
@@ -75,7 +66,6 @@ public class Account implements Serializable {
 
         this.username = username;
         this.password = password;
-        this.status = status;
         this.wishlist = wishlist;
         this.cart = cart;
         this.history = history;
