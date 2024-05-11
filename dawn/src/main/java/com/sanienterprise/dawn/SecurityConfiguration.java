@@ -35,6 +35,7 @@ public class SecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(t -> {
                 t.requestMatchers("/").permitAll();
+                t.requestMatchers("/images/**").permitAll();
                 t.requestMatchers("/hidden/**").permitAll();
                 t.requestMatchers("/browse/**").permitAll();
                 t.requestMatchers("/category").permitAll();

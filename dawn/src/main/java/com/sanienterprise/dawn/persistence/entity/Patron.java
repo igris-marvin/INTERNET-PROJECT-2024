@@ -50,8 +50,7 @@ public abstract class Patron implements Serializable {
     private String contact_number;
 
     @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private String role;
 
     public Patron(
         String id_number, 
@@ -59,7 +58,7 @@ public abstract class Patron implements Serializable {
         String surname, 
         String email, 
         String contact_number, 
-        Role role
+        String role
     ) {
         this.id_number = id_number;
         this.name = name;
@@ -67,9 +66,5 @@ public abstract class Patron implements Serializable {
         this.email = email;
         this.contact_number = contact_number;
         this.role = role;
-    }
-
-    public enum Role {
-        CUSTOMER, ADMIN, CUSTOMER_ADMIN;
     }
 }

@@ -30,7 +30,7 @@ public class HiddenController {
         Model model
     ) {
         Admin admin = new Admin();
-        List<String> roles = hidServ.getRoles();
+        String[] roles = hidServ.getRoles();
 
         model.addAttribute("admin", admin);
         model.addAttribute("roles", roles);

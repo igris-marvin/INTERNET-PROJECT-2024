@@ -55,7 +55,7 @@ public class Customer extends Patron {
         String surname, 
         String email, 
         String contact_number, 
-        Role role,
+        String role,
             Integer age, 
             char gender, 
             Date birth_date, 

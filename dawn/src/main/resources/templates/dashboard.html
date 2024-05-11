@@ -9,9 +9,9 @@
   </head>
   <body style="padding-top: 100px">
 
-	<nav class="navbar bg-body-tertiary fixed-top ">
+	    <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Admin Dashboard</a>
+          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -24,32 +24,31 @@
               <!-- ... -->
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door-fill"></i> Dashboard</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/admin/dashboard}"><i class="bi bi-house-door-fill"></i> Dashboard</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-plus-circle-fill"></i> Create Product</a>
+                    <a class="nav-link" th:href="@{/admin/create}"><i class="bi bi-plus-circle-fill"></i> Create Product</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-people-fill"></i> Users</a>
+                    <a class="nav-link" th:href="@{/admin/users}"><i class="bi bi-people-fill"></i> Users</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-basket-fill"></i> Products</a>
+                    <a class="nav-link" th:href="@{/admin/products}"><i class="bi bi-basket-fill"></i> Products</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-circle"></i> Auth
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i> Profile</a></li>
-                      <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus-fill"></i> Register</a></li>
+                      <li><a class="dropdown-item" th:href="@{/admin/profile}"><i class="bi bi-person-fill"></i> Profile</a></li>
+                      <li><a class="dropdown-item" th:href="@{/admin/register}"><i class="bi bi-person-plus-fill"></i> Register</a></li>
                       <li>
                         <hr class="dropdown-divider">
                       </li>
-                      <li><a class="dropdown-item text-danger-emphasis" href="#"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
+                      <li><a class="dropdown-item text-danger-emphasis" th:href="@{/logout}"><i class="bi bi-box-arrow-right"></i> Log Out</a></li>
                     </ul>
                   </li>
                 </ul>
-<!-- ... -->
 
               <form class="d-flex mt-3" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search Product by id" aria-label="Search">
@@ -58,231 +57,341 @@
             </div>
           </div>
         </div>
-  </nav>
+      </nav>
       
       <div class="container">
         <div class="row text-center">
 
+          <a th:href="@{/admin/products}" class="text-decoration-none">
+            <div class="col">
+              <a th:href="@{/admin/products}" class="text-decoration-none ">
+                <div class="card mb-3" overflow-hidden>
 
-
-          <div class="col">
-            <div class="card mb-3" overflow-hidden>
-                <img src="product_dashboard_panel.jpg" class="card-img-top img-responsive" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    <img th:src="@{/images/product_dashboard_panel.jpg}" class="card-img-top img-responsive" alt="...">
+                    <div class="card-body text-decoration-none">
+                        <h5 class="card-title  text-decoration-none">Products</h5>
+                        <p class="card-text  text-decoration-none">Click to show, modify or remove product(s)</p>
+                        <p class="card-text"><small class="text-body-secondary">Number of products <span th:text="${prods_count}"></span></small></p>
+                    </div>
                 </div>
+              </a>
             </div>
-        </div>
+          </a>
         
-        
-        
-          <div class="col">
-            <div class="card mb-3">
-              <img src="users_dashboard_panel.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-        </div>
+            <div class="col">
+              <a th:href="@{/admin/users}" class="text-decoration-none">
+                <div class="card mb-3" overflow-hidden>
 
-        <div class="card mb-3">
-          <img src="last card" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-          </div>
+                    <img th:src="@{/images/users_dashboard_panel.jpg}" class="card-img-top img-responsive" alt="...">
+                    <div class="card-body text-decoration-none">
+                        <h5 class="card-title  text-decoration-none">Customers</h5>
+                        <p class="card-text">Click to show a list of all customers, choose to remove a customer</p>
+                        <p class="card-text"><small class="text-body-secondary  text-decoration-none">Number of users <span th:text="${users_count}"></span></small></p>
+                    </div>
+                </div>
+              </a>
+            </div>
         </div>
 
         <div class="row">
-          <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="tv_stand_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="coffee_table_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="console_table_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="occasional_chair_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
-              </div>
-            </div>
-          </div>
-          
-        </div>
 
-        <div class="row">
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="carpet_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='TV_STAND')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/tv_stand_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">TV Stand Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.tv_stand_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
+
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="dining_set_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='COFFEE_TABLE')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/coffee_table_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Coffee Table Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.coffee_table_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="bar_chair_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='CONSOLE_TABLE')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/console_table_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Console Table Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.console_table_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="love_seat_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='OCCASIONAL_CHAIR')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/occasional_chair_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Occasional Chair Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.occasional_chair_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
         </div>
 
         <div class="row">
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="headboard_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='CARPET')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/carpet_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Carpet Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.carpet_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="pedestal_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='DINING_SET')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/dining_set_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Dining Set Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.dining_set_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="dressing_table_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='BAR_CHAIR')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/bar_chair_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Bar Chair Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.bar_chair_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="sleeper_couch_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='LOVE_SEAT')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/love_seat_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Love Seat Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.love_seat_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
         </div>
 
         <div class="row">
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="study_table_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='HEARDBOARD')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/headboard_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Headboard category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.headboard_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="chest_of_drawer_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='PEDESTAL')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/pedestal_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Pedestal Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.pedestal_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="used_fridge_category.jpg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='DRESSING_TABLE')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/dressing_table_category.jpeg}" class="card-img" alt="...">
+
+                <div class="card-img-overlay">
+                    <h5 class="card-title">Dressing Table Category</h5>
+                    <p class="card-text">Click to view list of products under this category</p>
+                    <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                      <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.dressing_table_count}"></span></small></p>
+                    </div>
+                </div>
               </div>
-            </div>
+
+            </a>
           </div>
           
           <div class="col p-2">
-            <div class="card text-bg-dark">
-              <img src="bathroom_caddy_category.jpeg" class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+
+            <a th:href="@{/admin/search(category='SLEEPER_COUCH')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/sleeper_couch_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Sleeper Couch Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.sleeper_couch_count}"></span></small></p>
+                  </div>
+                </div>
               </div>
-            </div>
+
+            </a>
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="col p-2">
+
+            <a th:href="@{/admin/search(category='STUDY_TABLE')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/study_table_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Study Table Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.study_table_count}"></span></small></p>
+                  </div>
+                </div>
+              </div>
+
+            </a>
+          </div>
+          
+          <div class="col p-2">
+
+            <a th:href="@{/admin/search(category='CHEST_OF_DRAWER')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/chest_of_drawer_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Chest Of Drawer Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.chest_of_drawer_count}"></span></small></p>
+                  </div>
+                </div>
+              </div>
+
+            </a>
+          </div>
+          
+          <div class="col p-2">
+
+            <a th:href="@{/admin/search(category='USED_FRIDGE')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/used_fridge_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Used Fridge Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.used_fridge_count}"></span></small></p>
+                  </div>
+                </div>
+              </div>
+
+            </a>
+          </div>
+          
+          <div class="col p-2">
+
+            <a th:href="@{/admin/search(category='BATHROOM_CADDY')}" class="text-decoration-none">
+
+              <div class="card text-bg-dark">
+                <img th:src="@{/images/bathroom_caddy_category.jpeg}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Bathroom Caddy Category</h5>
+                  <p class="card-text">Click to view list of products under this category</p>
+                  <div class="shadow p-1 mb-5 bg-body-tertiary rounded opacity-75 position-absolute bottom-0 start-25">
+                    <p class="card-text fw-bold rounded text-bg-light p-3"><small>Number of products <span th:text="${category_count_list.bathroom_caddy_count}"></span></small></p>
+                  </div>
+                </div>
+              </div>
+
+            </a>
           </div>
           
         </div>
