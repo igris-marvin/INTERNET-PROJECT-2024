@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
 
 @Controller
@@ -45,10 +46,20 @@ public class AdminController {
     public String posCreate() {
         return "";
     }
+    //products
+    @GetMapping("/products")
+    public String getProducts(
+        Model model
+    ) {
+        List<ProductDTO> products = admServ.getAllProducts();
+
+        model.addAttribute("products", products);
+
+        return "product_dash";
+    }
 
     //users
 
-    //products
 
     //profile
 

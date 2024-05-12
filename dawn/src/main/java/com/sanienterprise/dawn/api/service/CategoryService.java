@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sanienterprise.dawn.persistence.entity.Product;
-import com.sanienterprise.dawn.persistence.entity.Product.Category;
 import com.sanienterprise.dawn.persistence.repository.ProductRepository;
 
 @Service

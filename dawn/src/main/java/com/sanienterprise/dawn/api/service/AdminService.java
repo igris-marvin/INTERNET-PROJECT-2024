@@ -1,11 +1,14 @@
 package com.sanienterprise.dawn.api.service;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.entity.Product.Category;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
@@ -69,5 +72,37 @@ public class AdminService {
         }
 
         return count;
+    }
+
+    public List<ProductDTO> getAllProducts() {
+        List<ProductDTO> products = new ArrayList<>();
+
+        List<Product> prods = proRepo.findAll();
+
+        for(Product x: prods) {
+            products.add(genProductInfo(x));
+        }
+
+        return products;
+    }
+
+    private ProductDTO genProductInfo(Product x) {
+        Integer id = x.getProduct_id();
+        String product_image = "data:image/png;base64," 
+                + Base64
+                    .getEncoder()
+                    .encodeToString(
+                        x
+                            .getImages()
+                            .get(0)
+                            .getImage_source()
+                    );
+        String product_title = x.getProduct_name();
+        String product_category = x.getCategory().getDisplayName();
+        String product_price = Double.toString(x.getPrice());
+        String product_quantity = Integer.toString(x.getQuantity());
+        String product_added_date = x.getDate_added().toString();
+
+        return new ProductDTO(id, product_image, product_title, product_category, product_price, product_quantity, product_added_date);
     }
 }

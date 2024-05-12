@@ -11,7 +11,7 @@
 
 	    <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Products</span></a>
+          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard > Products</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -64,11 +64,11 @@
         <div class="row" th:each="x : ${products}">
 
           <div class="col">
-            <a th:href="@{/admin/modify(id='${x.product_id}')}" class="text-decoration-none">
-              <div class="card mb-3" style="max-width: 540px;">
+            <a th:href="@{/admin/modify(id=${x.product_id})}" class="text-decoration-none">
+              <div class="card mb-2" style="min-width: 800px; max-width: 800px;">
                 <div class="row g-0">
                   <div class="col-md-4">
-                    <img th:src="${product_image}" class="img-fluid rounded-start" alt="PRODUCT IMAGE">
+                    <img th:src="${x.product_image}" class="rounded-start"  style="width: 100%; height: 100%;" alt="PRODUCT IMAGE">
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
@@ -90,11 +90,11 @@
               <div class="card-body text-center">
                 <h5 class="card-title">Actions</h5>
                 <br>
-                <a th:href="@{/admin/modify(id='${x.product_id}')}"><span class="rounded-pill bg-primary text-white shadow-sm fw-bold" style="padding: 10px;">Modify</span></a>
+                <a th:href="@{/admin/modify(id=${x.product_id})}" class="text-decoration-none"><span class="rounded-pill bg-primary text-white shadow-sm fw-bold" style="padding: 10px;">Modify</span></a>
                 <br/>
                 <br/>
                 <br/>
-                <a th:href="@{/admin/delete(id='${x.product_id}')}"><span class="rounded-pill bg-danger text-white shadow-sm fw-bold" style="padding: 10px;">Remove</span></a>
+                <a th:href="@{/admin/delete(id=${x.product_id})}" class="text-decoration-none"><span class="rounded-pill bg-danger text-white shadow-sm fw-bold text-decoration-none " style="padding: 10px;">Remove</span></a>
               </div>
             </div>
           </div>

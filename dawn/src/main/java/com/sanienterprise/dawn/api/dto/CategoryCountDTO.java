@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.api.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryCountDTO {
+public class CategoryCountDTO implements Serializable {
     private int tv_stand_count;
     private int coffee_table_count;
     private int console_table_count;
@@ -24,5 +26,4 @@ public class CategoryCountDTO {
     private int chest_of_drawer_count;
     private int used_fridge_count;
     private int bathroom_caddy_count;
-
 }
