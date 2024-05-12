@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
@@ -58,14 +59,33 @@ public class AdminController {
         return "product_dash";
     }
 
+    //delete
+    @GetMapping("/delete")
+    public String getDelete(
+        @RequestParam("id") Integer id
+    ) {
+        admServ.removeProductById(id);
+
+        return "redirect:/admin/products";
+    }
+
+    //modify
+    @GetMapping("/modify")
+    public String getModify(
+        Model model,
+        @RequestParam("id") Integer id
+    ) {
+        //get all product info
+
+        return "modify_product_dash";
+    }
+
     //users
 
 
     //profile
 
     //register
-
-    //logout
 
     //search
 }

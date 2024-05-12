@@ -105,4 +105,8 @@ public class AdminService {
 
         return new ProductDTO(id, product_image, product_title, product_category, product_price, product_quantity, product_added_date);
     }
+
+    public void removeProductById(Integer id) {
+        proRepo.deleteById(id);
+    }
 }
