@@ -43,6 +43,8 @@ public class SecurityConfiguration {
                 t.requestMatchers("/user/**").hasRole("CUSTOMER");
                 t.requestMatchers("/admin/**").hasRole("ADMIN");
                 t.anyRequest().authenticated();
+        }).logout(t -> {
+            t.logoutSuccessUrl("/");
         })
             .formLogin(AbstractAuthenticationFilterConfigurer -> {
                 AbstractAuthenticationFilterConfigurer

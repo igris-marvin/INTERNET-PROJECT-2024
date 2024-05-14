@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
 import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
+import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.persistence.entity.Customer;
 import com.sanienterprise.dawn.persistence.entity.Image;
@@ -260,5 +261,26 @@ public class AdminService {
         }
 
         return null;
+    }
+
+    public ModifyProductDTO getModifiableProductObject(Integer id) {
+        
+        Product pro = proRepo.findById(id).get();
+
+        Integer m_product_id = pro.getProduct_id();
+        String m_product_name = pro.getProduct_name();
+        String m_product_description = pro.getProduct_description();
+        String m_style = pro.getStyle();
+        Double m_width = pro.getWidth();
+        Double m_length = pro.getLength();
+        Double m_height = pro.getHeight();
+        Double m_price = pro.getPrice();
+        Integer m_quantity = pro.getQuantity();
+        String m_category = pro.getCategory().getDisplayName();
+        String m_status = pro.getProduct_status().getDisplayName();
+
+        ModifyProductDTO dto = new ModifyProductDTO(m_product_id, m_product_name, m_product_description, m_style, m_width, m_length, m_height, m_price, m_quantity, m_category, m_status);
+    
+        return dto;
     }
 }

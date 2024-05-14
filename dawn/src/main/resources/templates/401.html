@@ -18,7 +18,11 @@
                <div class="col-md-10">
                     <p class="display-4">Unauthorized</p>
                     <p>Sorry, you are not authorized to access this resource.</p>
-                    <a class="btn btn-danger text-decoration-none" th:href="@{/}">Go Back</a>
+                    <div class="row">
+                         <div class="col">
+                              <a class="btn btn-light text-decoration-none text-black-50" th:href="@{/login}">Login</a></div>
+                         <div class="col float-start"><a class="btn btn-light text-decoration-none text-black-50" th:href="@{/}">Go Back</a></div>
+                    </div>
                </div>
           </div>
      </div>

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.CreateModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
+import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
 
@@ -106,10 +108,32 @@ public class AdminController {
     //modify
     @GetMapping("/modify")
     public String getModify(
-        Model model,
-        @RequestParam("id") Integer id
+        @RequestParam("id") Integer id,
+        Model model
     ) {
-        //get all product info
+        CreateProductDTO product = new CreateProductDTO();
+        ModifyProductDTO modify = admServ.getModifiableProductObject(id);
+
+        CreateModifyProductDTO product_dto = new CreateModifyProductDTO(product, modify);
+
+        List<String> statuses = admServ.getProductStatuses();
+        List<String> categories = admServ.getProductCategories();
+        String flag = "false";
+        
+        model.addAttribute("product_dto", product_dto);
+        model.addAttribute("statuses", statuses);
+        model.addAttribute("categories", categories);
+        model.addAttribute("success", flag);
+
+        return "modify_product_dash";
+    }
+
+    @PostMapping("/modify")
+    public String posModify(
+        @ModelAttribute("product_dto") CreateModifyProductDTO product_dto,
+        Model model
+    ) {
+        //UPDATE PRODUCT
 
         return "modify_product_dash";
     }

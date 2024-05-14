@@ -11,7 +11,7 @@
 
 	    <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard > Create Product</span></a>
+          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard > Modify Product</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -72,26 +72,30 @@
                     </div>
                     <div class="card-body">
                         <form th:object="${product}" th:action="@{/admin/create}" method="POST" enctype="multipart/form-data">
+                            
                             <div class="form-group mb-3">
+                                <label for="product_id" class="form-label">Product ID</label>
+                                <input type="number" class="form-control" id="product_id" th:value="${m_product_id}" placeholder="Product ID" readonly required>
+                            </div><div class="form-group mb-3">
                                 <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" th:field="*{product_name}" placeholder="Enter product name" required>
+                                <input type="text" class="form-control" id="product_name" th:field="*{product_name}" th:value="${m_product_name}" placeholder="Enter product name" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="style" class="form-label">Style</label>
-                                <input type="text" class="form-control" id="style" th:field="*{style}" placeholder="Enter product style" required>
+                                <input type="text" class="form-control" id="style" th:field="*{style}" th:value="${m_style}" placeholder="Enter product style" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="dimensions" class="form-label">Product Dimensions</label>
 
                                 <div class="row" id="dimemsions">
                                   <div class="col">
-                                    <input type="number" class="form-control" id="length" th:field="*{length}" placeholder="Length" required>
+                                    <input type="number" class="form-control" id="length" th:field="*{length}" th:value="${m_length}" placeholder="Length" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="width" th:field="*{width}" placeholder="Width" required>
+                                    <input type="number" class="form-control" id="width" th:field="*{width}" th:value="${m_width}" placeholder="Width" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="height" th:field="*{height}" placeholder="Height" required>
+                                    <input type="number" class="form-control" id="height" th:field="*{height}" th:value="${m_height}" placeholder="Height" required>
                                   </div>
                                   
                                 </div>
@@ -99,18 +103,18 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" th:field="*{price}" placeholder="Enter product price" required>
+                                <input type="text" class="form-control" id="price" th:field="*{price}" th:value="${m_price}" placeholder="Enter product price" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="quantity" class="form-label">Quantity</label>
-                                <input type="text" class="form-control" id="quantity" th:field="*{quantity}" placeholder="Enter product quantity" required>
+                                <input type="text" class="form-control" id="quantity" th:field="*{quantity}" th:value="${m_quantity}" placeholder="Enter product quantity" required>
                             </div>
                             <!-- Add more fields as needed -->
                             <!-- ... -->
                             <div class="form-group mb-3">
                                 <label for="category" class="form-label">Category</label>
                                 <select class="form-control" id="category" th:field="*{c_category}" required>
-                                    <option th:each="category : ${categories}" th:value="${category}" th:text="${category}">CATEGORY</option>
+                                    <option th:each="category : ${categories}" th:value="${category}" th:text="${category}" th:if="${m_category} == ${category} then 'selected'">CATEGORY</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
@@ -132,11 +136,14 @@
                               <a th:href="@{/admin/dashboard}" class="text-decoration-none p-2">
                                   <span type="button" class="btn btn-outline-dark">Back</span>
                               </a>
+                              <a th:href="@{/admin/modify(id=${mpro.m_product_id})}" class="text-decoration-none p-2">
+                                  <span type="button" class="btn btn-outline-primary">Revert changes</span>
+                              </a>
+                              <a th:href="@{/admin/remove(id=${mpro.m_product_id})}" class="text-decoration-none p-2">
+                                  <span type="button" class="btn btn-danger">Remove</span>
+                              </a>
                               <span class="p-2">
-                                <button type="reset" class="btn btn-outline-primary">Reset</button>
-                              </span>
-                              <span class="p-2">
-                                <button type="submit" class="btn btn-outline-success">Submit</button>
+                                <button type="submit" class="btn btn-outline-success">Modify</button>
                               </span>
                             </center>
                           
@@ -150,8 +157,8 @@
     <div class="container-fluid" style="padding-top: 150px;" th:if="${success} == 'true'">
       <center>
         <div class="fs-3 alert alert-success border rounded text-center" style="color: lime; background-color: white; max-width: 735px;">
-          <h1>Product successfully created!</h1>
-          <a th:href="@{/admin/create}">
+          <h1>Product modified successfully created!</h1>
+          <a th:href="@{/admin/products}">
             <h3 class="btn btn-outline-dark text-decoration-none">Ok</h3>
           </a>
         </div>
@@ -162,8 +169,8 @@
     <div class="container-fluid" style="padding-top: 150px;" th:if="${success} == 'not_true'">
       <center>
         <div class="fs-3 alert alert-danger border rounded text-center" style="color: red; background-color: white; max-width: 735px;">
-          <h1>Product not created, try again later!</h1>
-          <a th:href="@{/admin/create}">
+          <h1>Product not updated, try again later!</h1>
+          <a th:href="@{/admin/products}">
             <h3 class="btn btn-outline-dark text-decoration-none">Ok</h3>
           </a>
         </div>
