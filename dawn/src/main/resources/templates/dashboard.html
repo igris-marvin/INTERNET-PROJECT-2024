@@ -40,7 +40,7 @@
                       <i class="bi bi-person-circle"></i> Auth
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" th:href="@{/admin/profile}"><i class="bi bi-person-fill"></i> Profile</a></li>
+                      <li><a class="dropdown-item" th:href="@{/admin/profile(id='admin_id')}"><i class="bi bi-person-fill"></i> Profile</a></li>
                       <li><a class="dropdown-item" th:href="@{/admin/register}"><i class="bi bi-person-plus-fill"></i> Register</a></li>
                       <li>
                         <hr class="dropdown-divider">
@@ -91,6 +91,46 @@
                 </div>
               </a>
             </div>
+        </div>
+        
+        <div class="container-fluid" style="padding-top: 6px; padding-bottom: 16px;">
+          <div class="row">
+            <div class="col">
+              <a th:href="@{/admin/create}" class="text-decoration-none">
+                <div class="card">
+                  <div class="card-body">
+                    Create product
+                    <i class="bi bi-plus-circle-fill float-end"></i>
+                  </div>
+                </div>
+              </a>
+
+            </div>
+            <div class="col">
+              <a th:href="@{/admin/profile(id='admin_id')}" class="text-decoration-none">
+                <div class="card">
+                  <div class="card-body">
+                    Register an admin
+                    <i class="bi bi-person-fill float-end "></i>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+
+            <div class="col">
+              <a th:href="@{/admin/register}" class="text-decoration-none">
+                <div class="card">
+                  <div class="card-body">
+                    Register an admin
+                    <i class="bi bi-person-plus-fill float-end "></i>
+                  </div>
+                </div>
+              </a>
+              
+            </div>
+
+          </div>
         </div>
 
         <div class="row">

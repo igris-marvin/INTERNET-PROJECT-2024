@@ -1,19 +1,26 @@
 package com.sanienterprise.dawn.api.service;
 
+import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.persistence.entity.Customer;
+import com.sanienterprise.dawn.persistence.entity.Image;
 import com.sanienterprise.dawn.persistence.entity.Patron;
 import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.entity.Product.Category;
+import com.sanienterprise.dawn.persistence.entity.Product.ProductStatus;
 import com.sanienterprise.dawn.persistence.repository.CustomerRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 import com.sanienterprise.dawn.persistence.repository.ProductRepository;
@@ -26,9 +33,6 @@ public class AdminService {
 
     @Autowired
     private PatronRepository patRepo;
-
-    @Autowired
-    private CustomerRepository custRepo;
 
     public int getNumberOfProducts() {
         int count = Integer.parseInt(Long.toString(proRepo.count()));
@@ -183,5 +187,78 @@ public class AdminService {
         }
 
         return list;
+    }
+
+    public boolean createProduct(CreateProductDTO product, List<MultipartFile> files) {
+        boolean flag = false;
+
+        Product pro = new Product();
+
+        pro.setCategory(genProductCategory(product.getC_category()));
+        pro.setDate_added(Date.from(Instant.now()));
+        pro.setHeight(product.getHeight());
+        pro.setImages(genImageBytes(files));
+        pro.setLength(product.getLength());
+        pro.setPrice(product.getPrice());
+        pro.setProduct_description(product.getProduct_description());
+        pro.setProduct_name(product.getProduct_name());
+        pro.setProduct_status(genProductStatus(product.getS_status()));
+        pro.setQuantity(product.getQuantity());
+        pro.setStyle(product.getStyle());
+        pro.setWidth(product.getWidth());
+
+        proRepo.save(pro);
+
+        flag = true;
+
+        return flag;
+    }
+
+    private ProductStatus genProductStatus(String s_status) {
+        Product.ProductStatus[] list = Product.ProductStatus.values();
+
+        for(ProductStatus x: list) {
+            if(x.getDisplayName().equalsIgnoreCase(s_status)) {
+                return x;
+            }   
+        }
+
+        return null;
+    }
+
+    private List<Image> genImageBytes(List<MultipartFile> files) {
+        List<Image> list = new ArrayList<>();
+
+        try {
+
+            for(MultipartFile x: files) {
+    
+                String imageName = x.getName();
+                byte[] image_source = x.getBytes();
+    
+                Image image = new Image(imageName, image_source);
+
+                list.add(image);
+            }
+
+            return list;
+
+        } catch(IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return list;
+    }
+
+    private Category genProductCategory(String c_category) {
+        Product.Category[] list = Product.Category.values();
+
+        for(Category x: list) {
+            if(x.getDisplayName().equalsIgnoreCase(c_category)) {
+                return x;
+            }   
+        }
+
+        return null;
     }
 }

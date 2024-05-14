@@ -1,6 +1,5 @@
 package com.sanienterprise.dawn.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
-import com.sanienterprise.dawn.persistence.entity.Product;
 
 @Controller
 @RequestMapping("/admin")
@@ -46,35 +46,39 @@ public class AdminController {
     public String getCreate(
         Model model
     ) {
-        Product product = new Product();
+        CreateProductDTO product = new CreateProductDTO();
         List<String> statuses = admServ.getProductStatuses();
         List<String> categories = admServ.getProductCategories();
+        String flag = "false";
 
         model.addAttribute("product", product);
         model.addAttribute("statuses", statuses);
         model.addAttribute("categories", categories);
+        model.addAttribute("success", flag);
 
         return "create_product_dash";
     }
 
-    @ModelAttribute(name = "success")
-    public boolean getSuccess() {
-        return false;
-    }
-
     @PostMapping("/create")
     public String posCreate(
+        @RequestParam("image_files") List<MultipartFile> files,
+        @ModelAttribute("product") CreateProductDTO product,
+        @ModelAttribute("success") String flag,
         Model model
     ) {
-        Product product = (Product) model.getAttribute("product");
 
-        if(product != null) {
-            System.out.println("Product: " + product.toString());
+        boolean bool_flag = admServ.createProduct(product, files);
+
+        if(bool_flag) {
+            flag = "true";
         } else {
-            System.out.println("Product not created!");
+            flag = "not_true";
         }
 
-        return "";
+        model.addAttribute("success", flag);
+
+
+        return "create_product_dash";
     }
 
     //products
@@ -140,8 +144,6 @@ public class AdminController {
 
         return "search_dash";
     }
-
-    //category
 
     //profile
 

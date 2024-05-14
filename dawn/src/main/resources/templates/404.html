@@ -12,17 +12,18 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
 </head>
 
-<body class="bg-dark text-white py-5">
-     <div class="container py-5">
-          <div class="row">
-               <div class="col-md-2 text-center">
-                    <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 404</p>
-               </div>
-               <div class="col-md-10">
-                <p class="display-4">Looks Like You're Lost</p>
-                <p>The page you are looking for not available...</p>
-                </a><a class="btn btn-danger" href="index.html">Go Back</a>
+     <body class="bg-dark text-white py-5">
+          <div class="container py-5">
+               <div class="row">
+                    <div class="col-md-2 text-center">
+                         <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 404</p>
+                    </div>
+                    <div class="col-md-10">
+                    <p class="display-4">Looks Like You're Lost</p>
+                    <p>The page you are looking for not available...</p>
+                    <a class="btn btn-danger text-decoration-none" th:href="@{/}">Go Back</a>
+                    </div>
                </div>
           </div>
-     </div>
-
+     </body>
+</html>

@@ -75,14 +75,15 @@
               <th>Action</th>
             </tr>
             <tr th:each="u : ${customers}">
-              <td scope="row" th:text="${u.user_id}"></td>
-              <td th:text="${u.username}"></td>
-              <td th:text="${u.name}"></td>
-              <td th:text="${u.surname}"></td>
-              <td th:text="${u.email}"></td>
-              <td th:text="${u.date_added}"></td>
-              <td><a class="text-decoration-none" th:href="@{/admin/user/delete(id=${u.user_id})}"><span class="text-danger rounded-1">Remove</span></a></td>
+              <td scope="row" th:text="${u.user_id}" style="padding-top: 14px;"></td>
+              <td th:text="${u.username}" style="padding-top: 14px;"></td>
+              <td th:text="${u.name}" style="padding-top: 14px;"></td>
+              <td th:text="${u.surname}" style="padding-top: 14px;"></td>
+              <td th:text="${u.email}" style="padding-top: 14px;"></td>
+              <td th:text="${u.date_added}" style="padding-top: 14px;"></td>
+              <td class="" style="padding-top: 8px;"><a class="text-decoration-none" th:href="@{/admin/user/delete(id=${u.user_id})}"><span class="btn btn-block btn-danger">Remove</span></a></td>
             </tr>
+          
           </table>
 
         </div>
