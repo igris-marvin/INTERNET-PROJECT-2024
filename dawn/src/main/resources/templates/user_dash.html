@@ -50,10 +50,10 @@
                   </li>
                 </ul>
 
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search Product by id" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+                <form th:action="@{/admin/search}" method="POST" class="d-flex mt-3" role="search">
+                  <input class="form-control me-2" type="number" name="search_id" placeholder="Search Product by id" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
           </div>
         </div>
@@ -74,14 +74,14 @@
               <th>Date Added</th>
               <th>Action</th>
             </tr>
-            <tr th:each="u : ${users}">
+            <tr th:each="u : ${customers}">
               <td scope="row" th:text="${u.user_id}"></td>
               <td th:text="${u.username}"></td>
               <td th:text="${u.name}"></td>
               <td th:text="${u.surname}"></td>
               <td th:text="${u.email}"></td>
               <td th:text="${u.date_added}"></td>
-              <td><a th:href="@{/admin/user/delete(id=${u.user_id})}"><span class="text-danger rounded-1">Remove</span></a></td>
+              <td><a class="text-decoration-none" th:href="@{/admin/user/delete(id=${u.user_id})}"><span class="text-danger rounded-1">Remove</span></a></td>
             </tr>
           </table>
 

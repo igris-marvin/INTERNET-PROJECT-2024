@@ -8,9 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
+import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
+import com.sanienterprise.dawn.persistence.entity.Customer;
+import com.sanienterprise.dawn.persistence.entity.Patron;
 import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.entity.Product.Category;
+import com.sanienterprise.dawn.persistence.repository.CustomerRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 import com.sanienterprise.dawn.persistence.repository.ProductRepository;
 
@@ -22,6 +26,9 @@ public class AdminService {
 
     @Autowired
     private PatronRepository patRepo;
+
+    @Autowired
+    private CustomerRepository custRepo;
 
     public int getNumberOfProducts() {
         int count = Integer.parseInt(Long.toString(proRepo.count()));
@@ -108,5 +115,73 @@ public class AdminService {
 
     public void removeProductById(Integer id) {
         proRepo.deleteById(id);
+    }
+
+    public List<CustomerDashDTO> getAllCustomers() {
+        List<Patron> c = patRepo.findAll();
+
+        List<CustomerDashDTO> custs = new ArrayList<>();
+
+        for(Patron x: c) {
+
+            if(x instanceof Customer) {
+
+                custs.add(creatgenCustDTO(x));
+            }
+        }
+
+        return custs;
+    }
+
+    private CustomerDashDTO creatgenCustDTO(Patron x) {
+
+        Customer c = (Customer) x;
+
+        Integer user_id = c.getUser_id();
+        String username = c.getAccount().getUsername();
+        String surname = c.getSurname();
+        String name = c.getName();
+        String email = c.getEmail();
+        String date_added = c.getDate_added().toString();
+
+        return new CustomerDashDTO(user_id, username, name, surname, email, date_added);
+    }
+
+    public ProductDTO getProductById(Integer id) {
+        Product product = null;
+        
+        if(proRepo.existsById(id)) {
+            product = proRepo.findById(id).get();
+        } else {
+            return null;
+        }
+
+        ProductDTO prod = genProductInfo(product);
+
+        return prod;
+    }
+
+    public List<String> getProductStatuses() {
+        List<String> list = new ArrayList<>();
+
+        Product.ProductStatus[] array = Product.ProductStatus.values();
+
+        for(Product.ProductStatus x: array) {
+            list.add(x.getDisplayName());
+        }
+
+        return list;
+    }
+
+    public List<String> getProductCategories() {
+        List<String> list = new ArrayList<>();
+
+        Product.Category[] array = Product.Category.values();
+
+        for(Product.Category x: array) {
+            list.add(x.getDisplayName());
+        }
+
+        return list;
     }
 }
