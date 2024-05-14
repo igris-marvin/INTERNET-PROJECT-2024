@@ -7,35 +7,35 @@
   <title>Home page</title>
 
 </head>
-<body class="bg-info-subtle">
-    <nav class="navbar sticky-top navbar-expand-sm" style= "background-color: #47524e";>
-        <div class="container">
-          <a class="navbar-brand fw-bold font-monospace">Sani Enterprise</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<body class="bg-dark">
+  <nav class="navbar sticky-top navbar-expand-sm" style= "background-color: #47524e";>
+    <div class="container">
+      <a class="navbar-brand fw-bold font-monospace">Sani Enterprise</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contect Us</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="" class="nav-link">Cart</a></li>
-          </ul>
-        </div>
-        </div>
-      </nav> 
+    <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contect Us</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Cart</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav> 
 
-  <section class="text-center my-2">
+  <section class="text-center text-light  my-2">
     <h1>Categories</h1>
   </section>
   <!--categories-->
-  <section class="bg-info-subtle">
+  <section class="bg-dark>
     <div class="container-fluid">
         <div class="row justify-content-evenly my-5">
-            <div class="card g-0  " style="width: 18rem;">
+            <div class="card g-0 " style="width: 18rem;">
                 <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center ">TV Stand</h5>
@@ -56,7 +56,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Console Table</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='CONSOLE_TABLE')}"  class="btn btn-outline-primary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -64,7 +64,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Occassional Chair</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
+                  <a th:href="@{/browse/category(category='OCCASIONAL_CHAIR')}"  class="btn btn-outline-secondary">view</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Carpet</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='CARPET')}"  class="btn btn-outline-primary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -82,7 +82,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Dining Set</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
+                  <a th:href="@{/browse/category(category='DINING_SET')}"  class="btn btn-outline-secondary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -90,7 +90,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Bar Chair</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='BAR_CHAIR')}"  class="btn btn-outline-primary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -98,7 +98,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Love Seat</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
+                  <a th:href="@{/browse/category(category='LOVE_SEAT')}"  class="btn btn-outline-secondary">view</a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">HeadBoard</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='HEADBOARD')}"  class="btn btn-outline-primary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -116,7 +116,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Pedesstal</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
+                  <a th:href="@{/browse/category(category='PEDESSTAL')}"  class="btn btn-outline-secondary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -124,7 +124,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Dressing Table</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='DRESSING_TABLE')}" " class="btn btn-outline-primary">view</a>
                 </div>
             </div>
             <div class="card g-0  " style="width: 18rem;">
@@ -132,7 +132,7 @@
                 <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Sleeper Couch</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
+                  <a th:href="@{/browse/category(category='SLEEPER_COUCH')}" " class="btn btn-outline-secondary">view</a>
                 </div>
             </div>
         </div>
@@ -140,25 +140,25 @@
             <div class="card g-0  " style="width: 18rem;">
                 <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
                 <div class="card-body" style= "background-color: #47524e79">
-                  <h5 class="card-title text-center">Carpet</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
-                </div>
-            </div>
-            <div class="card g-0  " style="width: 18rem;">
-                <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
-                <div class="card-body" style= "background-color: #47524e79">
-                  <h5 class="card-title text-center">Dining Set</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-secondary">view</a>
-                </div>
-            </div>
-            <div class="card g-0  " style="width: 18rem;">
-                <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
-                <div class="card-body" style= "background-color: #47524e79">
                   <h5 class="card-title text-center">Study Table</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-outline-primary">view</a>
+                  <a th:href="@{/browse/category(category='STUDY_TABLE')}" " class="btn btn-outline-primary">view</a>
+                </div>
+            </div>
+            <div class="card g-0  " style="width: 18rem;">
+                <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
+                <div class="card-body" style= "background-color: #47524e79">
+                  <h5 class="card-title text-center">Used Fridge</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a th:href="@{/browse/category(category='USED_FRIDGE')}"  class="btn btn-outline-secondary">view</a>
+                </div>
+            </div>
+            <div class="card g-0  " style="width: 18rem;">
+                <img src="https://picsum.photos/300/200" class="card-img-top" alt="...">
+                <div class="card-body" style= "background-color: #47524e79">
+                  <h5 class="card-title text-center">Bathroom Caddy</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a th:href="@{/browse/category(category='BATHROOM_CADDY')}"  class="btn btn-outline-primary">view</a>
                 </div>
             </div>
         </div>
