@@ -233,7 +233,7 @@ public class AdminService {
 
             for(MultipartFile x: files) {
     
-                String imageName = x.getName();
+                String imageName = x.getOriginalFilename();
                 byte[] image_source = x.getBytes();
     
                 Image image = new Image(imageName, image_source);
