@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
 import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
+import com.sanienterprise.dawn.api.dto.ModifyImageDTO;
 import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.persistence.entity.Customer;
@@ -22,7 +23,6 @@ import com.sanienterprise.dawn.persistence.entity.Patron;
 import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.entity.Product.Category;
 import com.sanienterprise.dawn.persistence.entity.Product.ProductStatus;
-import com.sanienterprise.dawn.persistence.repository.CustomerRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 import com.sanienterprise.dawn.persistence.repository.ProductRepository;
 
@@ -279,8 +279,35 @@ public class AdminService {
         String m_category = pro.getCategory().getDisplayName();
         String m_status = pro.getProduct_status().getDisplayName();
 
-        ModifyProductDTO dto = new ModifyProductDTO(m_product_id, m_product_name, m_product_description, m_style, m_width, m_length, m_height, m_price, m_quantity, m_category, m_status);
+        List<ModifyImageDTO> image_list = getModifiableProductImages(pro.getImages());
+
+        ModifyProductDTO dto = new ModifyProductDTO(m_product_id, m_product_name, m_product_description, m_style, m_width, m_length, m_height, m_price, m_quantity, m_category, m_status, image_list);
     
         return dto;
+    }
+
+	public List<ModifyImageDTO> getModifiableProductImages(List<Image> images) {
+        List<ModifyImageDTO> list = new ArrayList<>();
+
+        Integer image_id = 0;
+        String image_data = "";
+
+        for (Image image : images) {
+            
+            image_id = image.getImage_id();
+            image_data = "data:image/png;base64," + Base64
+                                                        .getEncoder()
+                                                        .encodeToString(
+                                                            image
+                                                                .getImage_source()
+                                                        );
+
+
+            ModifyImageDTO dto = new ModifyImageDTO(image_id, image_data);
+            
+            list.add(dto);
+        }
+
+        return list;
     }
 }

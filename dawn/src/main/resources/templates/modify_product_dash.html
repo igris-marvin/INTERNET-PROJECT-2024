@@ -60,7 +60,6 @@
       </nav>
 
       <!-- CONTENT HERE  -->
-    
 
       <div class="container py-5" th:if="${success} == 'false'">
 
@@ -71,75 +70,89 @@
                         <h3 class="mb-0">Create Product</h3>
                     </div>
                     <div class="card-body">
-                        <form th:object="${product}" th:action="@{/admin/create}" method="POST" enctype="multipart/form-data">
+                        <form th:object="${modify}" th:action="@{/admin/create}" method="POST" enctype="multipart/form-data">
                             
                             <div class="form-group mb-3">
                                 <label for="product_id" class="form-label">Product ID</label>
-                                <input type="number" class="form-control" id="product_id" th:value="${m_product_id}" placeholder="Product ID" readonly required>
-                            </div><div class="form-group mb-3">
+                                <input type="number" class="form-control" id="product_id" name="p_id" th:value="${modify.m_product_id}" placeholder="Product ID" readonly required>
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" th:field="*{product_name}" th:value="${m_product_name}" placeholder="Enter product name" required>
+                                <input type="text" class="form-control" id="product_name" name="p_name" th:value="${modify.m_product_name}" placeholder="Enter product name" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="style" class="form-label">Style</label>
-                                <input type="text" class="form-control" id="style" th:field="*{style}" th:value="${m_style}" placeholder="Enter product style" required>
+                                <input type="text" class="form-control" id="style" name="p_style" th:value="${modify.m_style}" placeholder="Enter product style" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="dimensions" class="form-label">Product Dimensions</label>
 
                                 <div class="row" id="dimemsions">
-                                  <div class="col">
-                                    <input type="number" class="form-control" id="length" th:field="*{length}" th:value="${m_length}" placeholder="Length" required>
+                                  <div class="col"> 
+                                    <input type="number" class="form-control" id="length" name="p_length" th:value="${modify.m_length}" placeholder="Length" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="width" th:field="*{width}" th:value="${m_width}" placeholder="Width" required>
+                                    <input type="number" class="form-control" id="width" name="p_width" th:value="${modify.m_width}" placeholder="Width" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="height" th:field="*{height}" th:value="${m_height}" placeholder="Height" required>
+                                    <input type="number" class="form-control" id="height" name="p_height" th:value="${modify.m_height}" placeholder="Height" required>
                                   </div>
                                   
                                 </div>
                                 
                             </div>
                             <div class="form-group mb-3">
-                                <label for="price" class="form-label">Price</label>
-                                <input type="text" class="form-control" id="price" th:field="*{price}" th:value="${m_price}" placeholder="Enter product price" required>
+                                <label for="price" class="form-label">Price <b>ZAR</b></label>
+                                <input type="text" class="form-control" id="price" name="p_price" th:value="${modify.m_price}" placeholder="Enter product price" required>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="quantity" class="form-label">Quantity</label>
-                                <input type="text" class="form-control" id="quantity" th:field="*{quantity}" th:value="${m_quantity}" placeholder="Enter product quantity" required>
+                                <input type="text" class="form-control" id="quantity" name="p_quantity" th:value="${modify.m_quantity}" placeholder="Enter product quantity" required>
                             </div>
-                            <!-- Add more fields as needed -->
-                            <!-- ... -->
                             <div class="form-group mb-3">
                                 <label for="category" class="form-label">Category</label>
-                                <select class="form-control" id="category" th:field="*{c_category}" required>
-                                    <option th:each="category : ${categories}" th:value="${category}" th:text="${category}" th:if="${m_category} == ${category} then 'selected'">CATEGORY</option>
+                                <select class="form-control" id="category" name="p_category" required>
+                                    <option th:each="category : ${categories}" th:value="${category}" th:text="${category}" th:if="${modify.m_category} == ${category}" selected>CATEGORY</option>
+                                    <option th:each="category : ${categories}" th:value="${category}" th:text="${category}" th:if="${modify.m_category} != ${category}">CATEGORY</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="product_status" class="form-label">Product Status</label>
-                                <select class="form-control" id="product_status" th:field="*{s_status}" required>
-                                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}">STATUS</option>
+                                <select class="form-control" id="product_status" name="p_status" required>
+                                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}" th:if="${modify.m_status} == ${status}" selected>STATUS</option>
+                                    <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}" th:if="${modify.m_status} != ${status}">STATUS</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="images" class="form-label">Choose Product images: </label>
-                                <input type="file" class="form-control" name="image_files" accept="images/*" multiple required>
+                                <input type="file" class="form-control" name="image_files" accept="images/*" multiple />
                             </div>
+
+                            <!-- DISPLAY IMAGES -->
+
+                            <div class="form-group mb-3">
+                              <div class="row">
+                                <div th:each="image : ${modify.images}" class="col">
+                                  <img th:src="${image.image_data}" alt="modify image" width="100px" height="100px">
+                                  <input type="checkbox" th:field="*{images}" th:value="${image}" />
+                                </div>
+                              </div>
+                            </div>
+
                             <div class="form-group mb-3">
                               <label for="product_description" class="form-label">Product Description</label>
-                              <textarea class="form-control" rows="4" id="product_description" th:field="*{product_description}" placeholder="Enter product description" required></textarea>
+                              <textarea class="form-control" rows="4" id="product_description" name="p_description" th:text="${modify.m_product_description}" placeholder="Enter product description" required></textarea>
                             </div>
                             
                             <center>
-                              <a th:href="@{/admin/dashboard}" class="text-decoration-none p-2">
+                              <a th:href="@{/admin/products}" class="text-decoration-none p-2">
                                   <span type="button" class="btn btn-outline-dark">Back</span>
                               </a>
-                              <a th:href="@{/admin/modify(id=${mpro.m_product_id})}" class="text-decoration-none p-2">
+                              <a th:href="@{/admin/modify(id=${modify.m_product_id})}" class="text-decoration-none p-2">
                                   <span type="button" class="btn btn-outline-primary">Revert changes</span>
                               </a>
-                              <a th:href="@{/admin/remove(id=${mpro.m_product_id})}" class="text-decoration-none p-2">
+                              <a th:href="@{/admin/remove(id=${modify.m_product_id})}" class="text-decoration-none p-2">
                                   <span type="button" class="btn btn-danger">Remove</span>
                               </a>
                               <span class="p-2">

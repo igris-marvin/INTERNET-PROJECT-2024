@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
-import com.sanienterprise.dawn.api.dto.CreateModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
+import com.sanienterprise.dawn.api.dto.ModifyImageDTO;
 import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
@@ -111,16 +111,15 @@ public class AdminController {
         @RequestParam("id") Integer id,
         Model model
     ) {
-        CreateProductDTO product = new CreateProductDTO();
         ModifyProductDTO modify = admServ.getModifiableProductObject(id);
-
-        CreateModifyProductDTO product_dto = new CreateModifyProductDTO(product, modify);
 
         List<String> statuses = admServ.getProductStatuses();
         List<String> categories = admServ.getProductCategories();
         String flag = "false";
+
+        System.out.println(modify.getImages().size());
         
-        model.addAttribute("product_dto", product_dto);
+        model.addAttribute("modify", modify);
         model.addAttribute("statuses", statuses);
         model.addAttribute("categories", categories);
         model.addAttribute("success", flag);
@@ -130,10 +129,12 @@ public class AdminController {
 
     @PostMapping("/modify")
     public String posModify(
-        @ModelAttribute("product_dto") CreateModifyProductDTO product_dto,
+        @RequestParam("product_id") Integer product_id,
         Model model
     ) {
         //UPDATE PRODUCT
+        String flag = "true";
+
 
         return "modify_product_dash";
     }
