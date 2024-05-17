@@ -10,7 +10,7 @@
     
       <div class="container">
         <p th:text="${category}"></p>
-        <div th:each="i, stat : ${#numbers.sequence(0, categoryObj.size()-1)}"> <!-- iterate through products -->
+        <div th:each=""> <!-- iterate through products -->
             <div th:if="${stat.count % 4 == 1}" class="row"> <!-- start a new row after every 4 columns -->
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
