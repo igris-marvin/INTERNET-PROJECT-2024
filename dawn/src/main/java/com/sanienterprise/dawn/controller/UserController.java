@@ -15,12 +15,13 @@ public class UserController {
     }
 
     //UPDATE
-    
+        //UPDATE ACCOUNT DETAILS
         //UPDATE ADDRESS
 
     //CART
-
-    //
+        //ADD TO CART
+        //REMOVE FROM CART
+        //ORDER
 
     //REMOVE ACCOUNT
 

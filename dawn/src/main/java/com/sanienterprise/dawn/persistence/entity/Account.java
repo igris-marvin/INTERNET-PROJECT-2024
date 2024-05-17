@@ -35,6 +35,9 @@ public class Account implements Serializable {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @Column(nullable = false)
+    private byte[] profile_image;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cart_id")
     private Cart cart;
