@@ -9,38 +9,30 @@
   <title>Home page</title>
 </head>
 
-<body>
-  <nav class="navbar sticky-top navbar-expand-sm" style= "background-color: #47524e";>
-    <div class="container">
-      <a class="navbar-brand fw-bold font-monospace">Sani Enterprise</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navmenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contect Us</a></li>
-        <li class="nav-item"><a href="" class="nav-link">Login</a></li>
-        <li class="nav-item"><a href="" class="nav-link">Cart</a></li>
-      </ul>
+<body class="bg-dark">
+  <!---nav-->
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="btn nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
+      <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
     </div>
-    </div>
-  </nav> 
+  </nav>
+ 
   <!--bodypage heading-->
   <section class="text-center">
-    <h1 class="my-5" script>About</h1>
+    <h1 class="my-5 text-black" script>About</h1>
   </section>
+
 <!--bodypage content-->
   <section class="container text-center my-3">
     <div class="card my-3 border-0" style="max-width: 100%;">
       <div class="row g-0">
         <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">“Your Destination for Exceptional Furniture”</h5>
-            <p class="card-text px-5">
+          <div class="card-body bg-dark">
+            <h5 class="card-title text-warning">“Your Destination for Exceptional Furniture”</h5>
+            <p class="card-text px-5 text-light">
               Sani Enterprise is a distinguished furniture company dedicated to enhancing the comfort and aesthetics
               of your spaces. We specialize in offering a wide range of high-quality furniture that combines functionality
               with style. Our collection includes a diverse selection of pieces designed to suit various tastes and preferences.
@@ -49,22 +41,23 @@
             </p>
           </div>
         </div>
-        <div class="col-md-4">
-          <img src="/images/aboutPic.jpg" class="img-fluidS h-500 w-100" alt="...">
+        <div class="col-md-4 bg-dark">
+          <img src="images/aboutPic.jpg" class="img-fluidS h-500 w-100" alt="...">
         </div>
       </div>
     </div>
   </section>
+
   <section class="container text-center">
     <div class="card mb-3 mx-3" style="max-width: 100%;">
       <div class="row g-0">
-        <div class="col-md-5">
-          <img src="/images/servPic.jpg" class="img-fluid rounded-start" alt="...">
+        <div class="col-md-5 bg-dark">
+          <img src="images/aboutPic.jpg" class="img-fluid rounded-start bg-dark" alt="...">
         </div>
         <div class="col-md-7">
-          <div class="card-body">
-            <h5 class="card-title">Services</h5>
-            <p class="card-text">
+          <div class="card-body bg-dark">
+            <h5 class="card-title text-warning">Services</h5>
+            <p class="card-text text-light">
               Unleashing Comfort and Style with Sani Enterprise: At Sani Enterprise, we offer a comprehensive 
               suite of services designed to cater to all your furniture needs. Our services include custom furniture design, 
               where our skilled craftsmen bring your vision to life, creating pieces that reflect your style and personality. 
@@ -83,29 +76,103 @@
     <div class="card mb-3 mx-0" style="max-width: 100%;">
       <div class="row g-0">
         <div class="col-md-7">
-          <div class="card-body">
-            <h5 class="card-title">Location</h5>
+          <div class="card-body bg-dark">
+            <h5 class="card-title text-warning">Location</h5>
           </div>
         </div>
-        <div class="col-md-5">
-          <img src="/images/locatPic.jpg" class="img-fluid rounded-start" alt="...">
+        <div class="col-md-5 bg-dark">
+          <img src="images/aboutPic.jpg" class="img-fluid rounded-start" alt="...">
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-dark text-info">
-  <div class="container">
-    <div class="row">
-      <section>
-        <p>&copy; 2024 <a href="#">SANI Enteprise</a> All rights reserved.</p>
-      </section>
-    </div>
-</footer>
+       <!--footer-->
+       <footer class="text-center " style= "background-color: #3a3d3d "">
+        <!-- Grid container -->
+        <div class="container py-3 ">
+          <!-- Section: Social media -->
+          <section class="mb-0">
+            <!-- Facebook -->
+            <a
+            data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #3b5998;"
+              href="https://www.facebook.com/profile.php?id=100063728581507&mibextid=ZbWKwL"
+              role="button"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #55acee;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #dd4b39;"
+              href="mailto:sales@sanienterprises.co.za"
+              role="button"
+              ><i class="fab fa-google"></i
+            ></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #ac2bac;"
+              href="https://www.instagram.com/sanienterprise?igsh=dW12YWRpM2h4aGp0"
+              role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #0082ca;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #35b63d;;"
+              href="#!"
+              role="button"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="">...</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+  </script>
+
+
+
 </body>
+
 
 
 
