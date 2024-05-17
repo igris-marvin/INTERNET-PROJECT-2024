@@ -25,6 +25,10 @@ public interface ImageRepository extends JpaRepository<Image, Integer> {
         @Param("id") Integer id
     );
 
-    @Query("SELECT i.image_id FROM Image i")
-    public List<Integer> findAllId();
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Image i WHERE i.image_id = :id")
+    public int removeImageById(
+        @Param("id") Integer id
+    );
 }

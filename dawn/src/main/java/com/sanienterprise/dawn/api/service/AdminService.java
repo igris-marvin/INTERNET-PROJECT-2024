@@ -23,6 +23,7 @@ import com.sanienterprise.dawn.persistence.entity.Patron;
 import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.entity.Product.Category;
 import com.sanienterprise.dawn.persistence.entity.Product.ProductStatus;
+import com.sanienterprise.dawn.persistence.repository.ImageRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 import com.sanienterprise.dawn.persistence.repository.ProductRepository;
 
@@ -34,6 +35,9 @@ public class AdminService {
 
     @Autowired
     private PatronRepository patRepo;
+
+    @Autowired
+    private ImageRepository imgRepo;
 
     public int getNumberOfProducts() {
         int count = Integer.parseInt(Long.toString(proRepo.count()));
@@ -309,5 +313,47 @@ public class AdminService {
         }
 
         return list;
+    }
+
+    public boolean updateProduct(
+        Integer p_id, String p_name, String p_style, 
+        Double p_length, Double p_width, Double p_height, 
+        Double p_price, Integer p_quantity, String p_category, 
+        String p_status, String p_description, List<MultipartFile> image_files
+    ) {
+        boolean flag = true;
+
+        Product product = proRepo.findById(p_id).get();
+
+        removeImages(product.getImages());
+
+        product.setProduct_name(p_name);
+        product.setProduct_description(p_description);
+        product.setStyle(p_style);
+        product.setWidth(p_width);
+        product.setLength(p_length);
+        product.setHeight(p_height);
+        product.setPrice(p_price);
+        product.setQuantity(p_quantity);
+        product.setCategory(genProductCategory(p_category));
+        product.setProduct_status(genProductStatus(p_status));
+        
+        List<Image> images = genImageBytes(image_files);
+
+        product.setImages(images);
+
+        proRepo.save(product);
+
+        return flag;
+    }
+
+    private void removeImages(List<Image> images) {
+        
+        for (Image x: images) {
+
+            System.out.println("Image id: " +  x.getImage_id());
+            imgRepo.removeImageById(x.getImage_id());
+            System.out.println("Image id: " +  x.getImage_id());
+        }
     }
 }

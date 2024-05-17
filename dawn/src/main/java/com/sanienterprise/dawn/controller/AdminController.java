@@ -129,14 +129,28 @@ public class AdminController {
 
     @PostMapping("/modify")
     public String posModify(
-        @RequestParam("product_id") Integer product_id,
+        @RequestParam("p_id") Integer p_id,
+        @RequestParam("p_name") String p_name,
+        @RequestParam("p_style") String p_style,
+        @RequestParam("p_length") Double p_length,
+        @RequestParam("p_width") Double p_width,
+        @RequestParam("p_height") Double p_height,
+        @RequestParam("p_price") Double p_price,
+        @RequestParam("p_quantity") Integer p_quantity,
+        @RequestParam("p_category") String p_category,
+        @RequestParam("p_status") String p_status,
+        @RequestParam("p_description") String p_description,
+        @RequestParam("image_files") List<MultipartFile> image_files,
         Model model
     ) {
         //UPDATE PRODUCT
         String flag = "true";
 
+        boolean validate = admServ.updateProduct(p_id, p_name, p_style, p_length, p_width, p_height, p_price, p_quantity, p_category, p_status, p_description, image_files);
 
-        return "modify_product_dash";
+        model.addAttribute("success", flag);
+
+        return "redirect:/admin/modify?id=" + p_id;
     }
 
     //users
