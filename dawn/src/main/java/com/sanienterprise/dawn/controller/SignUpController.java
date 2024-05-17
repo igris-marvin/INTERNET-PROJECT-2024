@@ -27,11 +27,13 @@ public class SignUpController {
         Model model 
     ) {
         SignUpDTO dto = new SignUpDTO();
-        List<String> usernames = sigServ.getAllCustomerUsernames();
+        String error_message = "false";
+        String message = "";
 
         model.addAttribute("dto", dto);
-        model.addAttribute("usernames", usernames);
-
+        model.addAttribute("error_message", error_message);
+        model.addAttribute("message", message);
+        
         return "signup";
     }
 
@@ -39,13 +41,27 @@ public class SignUpController {
     public String postSignUp(
         @ModelAttribute("dto") SignUpDTO dto,
         @RequestParam("image_file") MultipartFile file,
+        @ModelAttribute("error_message") String error_message,
+        @ModelAttribute("messages") String message,
         Model model
     ) {
-        // model = sigServ.createCustomer(dto, file);
-
-        // if() {
-        //     return "signup";
-        // }
+        message = "";
+        
+        message = sigServ.validatePassword(dto.getPassword(), dto.getC_password());
+        message = sigServ.checkUsername(dto.getUsername());
+        message = sigServ.checkIdNumber(dto.getId_number());
+        
+        if(message.length() > 0) {
+            error_message = "true";
+            
+            model.addAttribute("dto", dto);
+            model.addAttribute("error_message", error_message);
+            model.addAttribute("message", message);
+        
+            return "signup";
+        } else {
+            sigServ.createCustomer(dto);
+        }
 
         return "redirect:/signup/success";
     }

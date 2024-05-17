@@ -21,7 +21,7 @@ public class SignUpService {
     @Autowired
     private AccountRepository accRepo;
 
-    public List<String> getAllCustomerUsernames() {
+    private List<String> getAllCustomerUsernames() {
         List<Account> accs = accRepo.findAll();
         List<Patron> ads = patRepo.findAll();
 
@@ -43,6 +43,24 @@ public class SignUpService {
         }
 
         return usernames;
+    }
+
+    public String validatePassword(String password, String c_password) {
+        if(password.equals(c_password)) {
+            return "";
+        } else {
+            return "Passwords do not match!";
+        }
+    }
+
+    public String checkUsername(String username) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkUsername'");
+    }
+
+    public String checkIdNumber(String id_number) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'checkIdNumber'");
     }
 
 }
