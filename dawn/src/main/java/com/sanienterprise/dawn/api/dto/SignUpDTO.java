@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.api.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +17,5 @@ public class SignUpDTO {
     private String contact;
     private String username;
     private String password;
+    private String c_password;
 }
