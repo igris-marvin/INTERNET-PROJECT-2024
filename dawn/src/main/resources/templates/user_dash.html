@@ -62,7 +62,7 @@
       <!-- CONTENT HERE  -->
 
       <!-- <center> -->
-        <div class="container-fluid">
+        <div class="container-fluid" th:if="${val} == 'false'">
 
           <table class="table table-responsive">
             <tr>
@@ -86,6 +86,13 @@
           
           </table>
 
+        </div>
+        
+        <div class="container-fluid" th:if="${val} == 'true'">
+          <center>
+            <h2>Users not available</h2>
+            <a class="text-decoration-none" th:href="@{/admin/dashboard}"><span class="btn btn-dark ">Back</span></a>
+          </center>
         </div>
       <!-- </center> -->
       

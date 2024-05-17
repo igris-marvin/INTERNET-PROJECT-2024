@@ -3,6 +3,8 @@ package com.sanienterprise.dawn.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sanienterprise.dawn.api.dto.AdminDTO;
 import com.sanienterprise.dawn.api.dto.CategoryCountDTO;
 import com.sanienterprise.dawn.api.dto.CreateProductDTO;
 import com.sanienterprise.dawn.api.dto.CustomerDashDTO;
-import com.sanienterprise.dawn.api.dto.ModifyImageDTO;
 import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
+import com.sanienterprise.dawn.api.dto.RegisterAdminDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
+import com.sanienterprise.dawn.persistence.entity.Admin;
 
 @Controller
 @RequestMapping("/admin")
@@ -90,7 +94,14 @@ public class AdminController {
     ) {
         List<ProductDTO> products = admServ.getAllProducts();
 
+        String val = "false";
+
+        if(!(products.size() > 0)) {
+            val = "true";
+        }  
+
         model.addAttribute("products", products);
+        model.addAttribute("val", val);
 
         return "product_dash";
     }
@@ -115,14 +126,12 @@ public class AdminController {
 
         List<String> statuses = admServ.getProductStatuses();
         List<String> categories = admServ.getProductCategories();
-        String flag = "false";
 
         System.out.println(modify.getImages().size());
         
         model.addAttribute("modify", modify);
         model.addAttribute("statuses", statuses);
         model.addAttribute("categories", categories);
-        model.addAttribute("success", flag);
 
         return "modify_product_dash";
     }
@@ -144,11 +153,9 @@ public class AdminController {
         Model model
     ) {
         //UPDATE PRODUCT
-        String flag = "true";
 
-        boolean validate = admServ.updateProduct(p_id, p_name, p_style, p_length, p_width, p_height, p_price, p_quantity, p_category, p_status, p_description, image_files);
+        admServ.updateProduct(p_id, p_name, p_style, p_length, p_width, p_height, p_price, p_quantity, p_category, p_status, p_description, image_files);
 
-        model.addAttribute("success", flag);
 
         return "redirect:/admin/modify?id=" + p_id;
     }
@@ -160,7 +167,14 @@ public class AdminController {
     ) {
         List<CustomerDashDTO> customers = admServ.getAllCustomers();
 
+        String val = "false";
+        
+        if(!(customers.size() > 0)) {
+            val = "true";
+        }
+
         model.addAttribute("customers", customers);
+        model.addAttribute("val", val);
 
         return "user_dash";
     }
@@ -185,6 +199,53 @@ public class AdminController {
     }
 
     //profile
+    @GetMapping("/profile")
+    public String getProfile(
+        Model model
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        AdminDTO admin = admServ.getAdminDetails(username);
+
+        model.addAttribute("admin", admin);
+
+        return "profile_dash";
+    }
 
     //register
+    @GetMapping("/register")
+    public String getRegister(
+        Model model
+    ) {
+        RegisterAdminDTO admin = new RegisterAdminDTO();
+        String val = "false";
+
+        model.addAttribute("admin", admin);
+        model.addAttribute("val", val);
+
+        return "register_admin_dash";
+    }
+
+    @PostMapping("/register")
+    public String posRegister(
+        @ModelAttribute("admin") RegisterAdminDTO admin,
+        @ModelAttribute("val") String val,
+        @RequestParam("image_file") MultipartFile file,
+        Model model
+    ) {
+        boolean flag = admServ.registerAdmin(admin, file);
+
+        if(!flag) {
+
+            val = "not_true";
+        } else {
+
+            val = "true";
+        }
+
+        model.addAttribute("val", val);
+        
+        return "register_admin_dash";
+    }
 }

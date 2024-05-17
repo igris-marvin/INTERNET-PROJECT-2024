@@ -66,17 +66,35 @@
                   <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                       <div class="card-body">
                           <div class="text-center mb-4">
-                              <img src="profile.jpg" alt="Admin" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
+                              <img th:src="${admin.image}" alt="Admin" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover;">
                           </div>
                           <h5 class="card-title text-center mb-3">Admin Profile</h5>
                           <table class="table table-striped">
                               <tbody>
-                                  <tr><td><strong>Patron ID:</strong></td><td>123456</td></tr>
-                                  <tr><td><strong>Username:</strong></td><td>admin_username</td></tr>
-                                  <tr><td><strong>Name:</strong></td><td>Admin Name</td></tr>
-                                  <tr><td><strong>Surname:</strong></td><td>Admin Surname</td></tr>
-                                  <tr><td><strong>Contact Number:</strong></td><td>+1234567890</td></tr>
-                                  <tr><td><strong>Email:</strong></td><td>admin@example.com</td></tr>
+                                  <tr>
+                                    <td><strong>Patron ID:</strong></td>
+                                    <td th:text="${admin.id}">PATRON ID</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Username:</strong></td>
+                                    <td th:text="${admin.username}">USERNAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Name:</strong></td>
+                                    <td th:text="${admin.name}">NAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Surname:</strong></td>
+                                    <td th:text="${admin.surname}">SURNAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Contact Number:</strong></td>
+                                    <td th:text="${admin.contact}">CONTACT NUMBER</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td th:text="${admin.email}">EMAIL</td>
+                                  </tr>
                               </tbody>
                           </table>
                       </div>
