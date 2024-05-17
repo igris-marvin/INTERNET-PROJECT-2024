@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,10 +34,9 @@ public class SecurityConfiguration {
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(t -> {
                 t.requestMatchers("/").permitAll();
-                t.requestMatchers("/images/**").permitAll();
-                t.requestMatchers("/hidden/**").permitAll();
+                t.requestMatchers("/images/**").permitAll(); //for accessing static images
                 t.requestMatchers("/browse/**").permitAll();
-                t.requestMatchers("/category").permitAll();
+                t.requestMatchers("/category/**").permitAll();
                 t.requestMatchers("/home/**").permitAll();
                 t.requestMatchers("/user/**").hasRole("CUSTOMER");
                 t.requestMatchers("/admin/**").hasRole("ADMIN");
