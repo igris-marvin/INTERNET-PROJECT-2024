@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Home</title>
         
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>        
@@ -19,29 +19,24 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand text-warning " href="#">Sani Enterprise</a>
+      <a class="navbar-brand text-warning fw-bold px-2 mx-2" href="#">Sani Enterprise</a>
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link active text-light fw-bold" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link text-light" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html">Shop</a>
+            <a class="nav-link text-light" href="shop.html">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link text-light" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
-      <div class="d-block justify-content-end ">
-        <a href="#" class="btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" role="button" aria-controls="cartOffcanvas">
-          <i class="fas fa-shopping-cart"></i>
-          <span class="badge bg-danger rounded-pill">0</span>
-        </a>
-      </div>
+
       <div class="dropdown d-block justify-content-end ">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" >
           <i class="fas fa-user"></i>
@@ -53,18 +48,6 @@
       </div>
     </div>
   </nav>
-  
-
-<!-- Offcanvas -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="cartOffcanvasLabel">Shopping Cart</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        Your cart is currently empty.
-    </div>
-</div>
     
     <!--body"-->
    
@@ -92,7 +75,7 @@
                   <div class="card-body text-lg-center">
                       <h5 class="card-title fw-bold fs-2 text-warning">Sani Enterprise</h5>
                       <p class="card-text text-light">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <a href="shop.html" class="btn btn-lg" style= "background-color: #47524e";  > Shop Now</a>
+                      <a href="shop.html" class=" btn btn-outline-info btn-lg "  > Shop Now</a>
                   </div>
                 </div>
               </div>
@@ -100,7 +83,7 @@
       </section>
 
       <!--footer-->
-      <footer class="text-center " style= "background-color: #3a3d3d "">
+      <footer class=" fixed-bottom text-center " style= "background-color: #3a3d3d "">
         <!-- Grid container -->
         <div class="container py-3 ">
           <!-- Section: Social media -->
@@ -114,16 +97,7 @@
               role="button"
               ><i class="fab fa-facebook-f"></i
             ></a>
-      
-            <!-- Twitter -->
-            <a
-              data-mdb-ripple-init
-              class="btn text-white btn-floating m-1"
-              style="background-color: #55acee;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-twitter"></i
-            ></a>
+
       
             <!-- Google -->
             <a
@@ -145,16 +119,7 @@
               ><i class="fab fa-instagram"></i
             ></a>
       
-            <!-- Linkedin -->
-            <a
-              data-mdb-ripple-init
-              class="btn text-white btn-floating m-1"
-              style="background-color: #0082ca;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <!-- Github -->
+            <!-- Whatsapp -->
             <a
               data-mdb-ripple-init
               class="btn text-white btn-floating m-1"
@@ -166,19 +131,11 @@
           </section>
           <!-- Section: Social media -->
         </div>
-        <!-- Grid container -->
-      
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-          © 2020 Copyright:
-          <a class="text-body" href="">...</a>
-        </div>
-        <!-- Copyright -->
       </footer>
 
     <style>
       .carousel-item {
-          height: 65vh;
+          height: 74vh;
       }
       
       .carousel-item img {
