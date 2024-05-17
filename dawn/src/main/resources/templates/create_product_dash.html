@@ -85,20 +85,20 @@
 
                                 <div class="row" id="dimemsions">
                                   <div class="col">
-                                    <input type="number" class="form-control" id="length" th:field="*{length}" placeholder="Length" required>
+                                    <input type="text" class="form-control" id="length" th:field="*{length}" placeholder="Length" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="width" th:field="*{width}" placeholder="Width" required>
+                                    <input type="text" class="form-control" id="width" th:field="*{width}" placeholder="Width" required>
                                   </div>
                                   <div class="col">
-                                    <input type="number" class="form-control" id="height" th:field="*{height}" placeholder="Height" required>
+                                    <input type="text" class="form-control" id="height" th:field="*{height}" placeholder="Height" required>
                                   </div>
                                   
                                 </div>
                                 
                             </div>
                             <div class="form-group mb-3">
-                                <label for="price" class="form-label">Price</label>
+                                <label for="price" class="form-label">Price <b>ZAR</b></label>
                                 <input type="text" class="form-control" id="price" th:field="*{price}" placeholder="Enter product price" required>
                             </div>
                             <div class="form-group mb-3">
@@ -129,7 +129,7 @@
                             </div>
                             
                             <center>
-                              <a th:href="@{/admin/dashboard}" class="text-decoration-none p-2">
+                              <a th:href="@{/admin/products}" class="text-decoration-none p-2">
                                   <span type="button" class="btn btn-outline-dark">Back</span>
                               </a>
                               <span class="p-2">

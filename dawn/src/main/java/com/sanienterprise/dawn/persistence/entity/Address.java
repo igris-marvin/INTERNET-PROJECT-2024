@@ -58,6 +58,4 @@ public class Address implements Serializable {
         this.province = province;
         this.zip_code = zip_code;
     }
-
-    
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
+    <title>Admin Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
@@ -11,7 +11,7 @@
 
 	    <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard > Products</span></a>
+          <a class="navbar-brand text-decoration-none" th:href="@{/admin/dashboard}"><span class="fs-1">Admin Dashboard > Profile</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -50,66 +50,61 @@
                   </li>
                 </ul>
 
-                <form th:action="@{/admin/search}" method="POST" class="d-flex mt-3" role="search">
-                  <input class="form-control me-2" type="number" name="search_id" placeholder="Search Product by id" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+              <form th:action="@{/admin/search}" method="POST" class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="number" name="search_id" placeholder="Search Product by id" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
             </div>
           </div>
         </div>
       </nav>
 
-      <div class="container-fluid container-sm"  th:if="${val} == 'false'">
-        
-        <div class="row" th:each="x : ${products}">
-
-          <div class="col">
-            <a th:href="@{/admin/modify(id=${x.product_id})}" class="text-decoration-none">
-              <div class="card mb-2" style="min-width: 800px; max-width: 800px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img th:src="${x.product_image}" class="rounded-start"  style="width: 100%; height: 100%;" alt="PRODUCT IMAGE">
+      <!-- CONTENT HERE  -->
+      <div class="container py-5">
+          <div class="row">
+              <div class="col-lg-6 mx-auto">
+                  <div class="card" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+                      <div class="card-body">
+                          <div class="text-center mb-4">
+                              <img th:src="${admin.image}" alt="Admin" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover;">
+                          </div>
+                          <h5 class="card-title text-center mb-3">Admin Profile</h5>
+                          <table class="table table-striped">
+                              <tbody>
+                                  <tr>
+                                    <td><strong>Patron ID:</strong></td>
+                                    <td th:text="${admin.id}">PATRON ID</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Username:</strong></td>
+                                    <td th:text="${admin.username}">USERNAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Name:</strong></td>
+                                    <td th:text="${admin.name}">NAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Surname:</strong></td>
+                                    <td th:text="${admin.surname}">SURNAME</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Contact Number:</strong></td>
+                                    <td th:text="${admin.contact}">CONTACT NUMBER</td>
+                                  </tr>
+                                  <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td th:text="${admin.email}">EMAIL</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
                   </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title" th:text="${x.product_title}">PRODUCT NAME</h5>
-                      <p class="card-text">Category: <span th:text="${x.product_category}">PRODUCT CATEGORY</span></p>
-                      <p class="card-text">Price: R<span th:text="${x.product_price}">PRODUCT PRICE</span></p>
-                      <p class="card-text">Quantity: <span th:text="${x.product_quantity}">PRODUCT QUANTITY</span></p>
-                      <p class="card-text"><small class="text-body-secondary">Date Added: <span th:text="${x.product_added_date}">DATE ADDED</span></small></p>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </a>
-
           </div>
-
-          <div class="col">
-            <div class="card" style="max-width: 200px; min-height: 210px;">
-              <div class="card-body text-center">
-                <h5 class="card-title">Actions</h5>
-                <br>
-                <a th:href="@{/admin/modify(id=${x.product_id})}" class="text-decoration-none"><span class="rounded-pill bg-primary text-white shadow-sm fw-bold" style="padding: 10px;">Modify</span></a>
-                <br/>
-                <br/>
-                <br/>
-                <a th:href="@{/admin/delete(id=${x.product_id})}" class="text-decoration-none"><span class="rounded-pill bg-danger text-white shadow-sm fw-bold text-decoration-none " style="padding: 10px;">Remove</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-          
       </div>
 
-      <div class="container-fluid" th:if="${val} == 'true'">
-        <center>
-          <h2>Products not available</h2>
-          <a class="text-decoration-none" th:href="@{/admin/create}"><span class="btn btn-info" style="margin-bottom: 12px;">Create a product</span></a>
-          <br>
-          <a class="text-decoration-none" th:href="@{/admin/dashboard}"><span class="btn btn-dark ">Back</span></a>
-        </center>
-      </div>
+
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

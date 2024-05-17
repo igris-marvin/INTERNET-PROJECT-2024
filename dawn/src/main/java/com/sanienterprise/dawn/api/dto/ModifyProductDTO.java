@@ -1,5 +1,7 @@
 package com.sanienterprise.dawn.api.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +21,5 @@ public class ModifyProductDTO {
     private Integer m_quantity;
     private String m_category;
     private String m_status;
+    private List<ModifyImageDTO> images;
 }

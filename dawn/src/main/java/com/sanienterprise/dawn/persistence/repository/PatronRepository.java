@@ -19,4 +19,10 @@ public interface PatronRepository extends JpaRepository<Patron, Integer> {
     public int countPatronByRole(
         @Param("role") String role
     );
+
+    @Transactional
+    @Query("SELECT i FROM Patron i WHERE i.admin_username = :username")
+    public Patron findPatronByUsername (
+        @Param("username") String username
+    );
 }

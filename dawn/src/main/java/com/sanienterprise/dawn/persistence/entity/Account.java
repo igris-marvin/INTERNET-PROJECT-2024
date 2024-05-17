@@ -42,31 +42,20 @@ public class Account implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cart_id")
     private Cart cart;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_history_id")
-    private History history;
 
     // -- REFERENCED OBJECT
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
     private Customer customer;
 
-    // --
-
-    public Account(
-        String username, 
-        String password, 
-        Wishlist wishlist, 
-        Cart cart,
-        History history
-    ) {
-
+    public Account(String username, String password, Wishlist wishlist, Cart cart) {
         this.username = username;
         this.password = password;
         this.wishlist = wishlist;
         this.cart = cart;
-        this.history = history;
     }
+
+    // --
+
     
 }
