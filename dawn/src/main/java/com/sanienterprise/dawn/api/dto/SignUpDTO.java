@@ -17,5 +17,4 @@ public class SignUpDTO {
     private String contact;
     private String username;
     private String password;
-    private String c_password;
 }

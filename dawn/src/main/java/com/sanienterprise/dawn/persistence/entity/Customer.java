@@ -9,7 +9,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
@@ -32,19 +31,16 @@ public class Customer extends Patron {
     @Column(nullable = true, length = 20)
     private Integer age;
 
-    @Column(nullable = true, length = 20)
+    @Column(nullable = true, length = 1)
     private char gender;
 
     @Column(nullable = true, length = 20)
+    @Temporal(value = TemporalType.DATE)
     private Date birth_date;
 
     @Column(nullable = true, length = 20)
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date date_added;
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_address_id")
-    private Address address;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_account_id")
@@ -61,7 +57,6 @@ public class Customer extends Patron {
             char gender, 
             Date birth_date, 
             Date date_added, 
-            Address address, 
             Account account
     ) {
         super(id_number, name, surname, email, contact_number, role);
@@ -69,7 +64,7 @@ public class Customer extends Patron {
         this.gender = gender;
         this.birth_date = birth_date;
         this.date_added = date_added;
-        this.address = address;
         this.account = account;
     }
+
 }

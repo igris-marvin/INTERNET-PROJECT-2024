@@ -41,27 +41,10 @@ public class SignUpController {
     public String postSignUp(
         @ModelAttribute("dto") SignUpDTO dto,
         @RequestParam("image_file") MultipartFile file,
-        @ModelAttribute("error_message") String error_message,
-        @ModelAttribute("messages") String message,
         Model model
     ) {
-        message = "";
-        
-        message = sigServ.validatePassword(dto.getPassword(), dto.getC_password());
-        message = sigServ.checkUsername(dto.getUsername());
-        message = sigServ.checkIdNumber(dto.getId_number());
-        
-        if(message.length() > 0) {
-            error_message = "true";
-            
-            model.addAttribute("dto", dto);
-            model.addAttribute("error_message", error_message);
-            model.addAttribute("message", message);
-        
-            return "signup";
-        } else {
-            sigServ.createCustomer(dto);
-        }
+        sigServ.createCustomer(dto, file);
+
 
         return "redirect:/signup/success";
     }

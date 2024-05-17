@@ -89,10 +89,11 @@ public class PatronService implements UserDetailsService {
         Account account = new Account(
             username, 
             password, 
+            null,
             null
         );
 
-        Patron patron = new Customer(null, null, null, null, null, "ADMIN#CUSTOMER", 0, 'M', null, null, null, account);
+        Patron patron = new Customer(null, null, null, null, null, "ADMIN#CUSTOMER", 0, 'M', null, null, account);
 
         patRepo.save(patron);
     }

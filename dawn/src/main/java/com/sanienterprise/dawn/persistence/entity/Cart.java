@@ -1,6 +1,7 @@
 package com.sanienterprise.dawn.persistence.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -21,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-@NoArgsConstructor
 @AllArgsConstructor
 public class Cart implements Serializable {
 
@@ -30,6 +30,7 @@ public class Cart implements Serializable {
     private Integer cart_id;
 
     private Double total;
+    private int numOfProducts;
 
     // List<Product> prod_id
     @OneToMany(cascade = CascadeType.ALL)
@@ -40,12 +41,19 @@ public class Cart implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "cart")
     private Account account;
 
-    // --
+    public Cart() {
+        total = 0.0;
+        numOfProducts = 0;
+        products = new ArrayList<>();
+    }
 
-    public Cart(
-        List<Product> products
-    ) {
+    public Cart(Double total, int numOfProducts, List<Product> products) {
+        this.total = total;
+        this.numOfProducts = numOfProducts;
         this.products = products;
     }
+
+    // --
+
 
 }

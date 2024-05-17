@@ -35,7 +35,7 @@ public class Account implements Serializable {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGBLOB")
     private byte[] profile_image;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -47,11 +47,19 @@ public class Account implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
     private Customer customer;
 
-    public Account(String username, String password, Cart cart) {
+    public Account(
+        String username, 
+        String password, 
+        byte[] profile_image, 
+        Cart cart
+    ) {
         this.username = username;
         this.password = password;
+        this.profile_image = profile_image;
         this.cart = cart;
     }
+
+    
 
     // --
 

@@ -36,10 +36,6 @@
                 <div>
                     <h2 class="text-center text-warning">Enter SignUp Information</h2>
                 </div>
-
-                <div class="container text-center" th:if="${error_message} == 'true'">
-                    <span class="text-bg-danger" th:value="${message}">MESSAGE</span>
-                </div>
                 
                 <div class="mb-3 mt-3 p-2">
                     <label for="name" class="form-label text-light">Name:</label>
@@ -67,9 +63,6 @@
 
                     <label for="password" class="form-label text-light">Password:</label>
                     <input id="password" th:field="*{password}" class="form-control" type="password" required>
-
-                    <label for="confirmPassword" class="form-label text-light">Confirm Password:</label>
-                    <input id="confirm_password" th:field="*{c_password}" class="form-control" type="password" required>
                 </div>
                 
                 <div class="p-1 text-center">
