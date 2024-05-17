@@ -8,9 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-    //user account
+    //USER ACCOUNT
     @GetMapping("/account")
     public String getAccount() {
         return "account";
     }
+
+    //UPDATE
+        //UPDATE ACCOUNT DETAILS
+        //UPDATE ADDRESS
+
+    //CART
+        //ADD TO CART
+        //REMOVE FROM CART
+        //ORDER
+
+    //REMOVE ACCOUNT
+
+    //
 }

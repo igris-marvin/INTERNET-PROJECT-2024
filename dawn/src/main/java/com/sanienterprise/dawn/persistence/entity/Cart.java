@@ -29,6 +29,8 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cart_id;
 
+    private Double total;
+
     // List<Product> prod_id
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> products;

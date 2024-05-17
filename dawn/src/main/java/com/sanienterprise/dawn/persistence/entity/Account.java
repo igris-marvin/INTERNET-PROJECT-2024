@@ -35,9 +35,8 @@ public class Account implements Serializable {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_wishlist_id")
-    private Wishlist wishlist;
+    @Column(nullable = false)
+    private byte[] profile_image;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_cart_id")
@@ -48,10 +47,9 @@ public class Account implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "account")
     private Customer customer;
 
-    public Account(String username, String password, Wishlist wishlist, Cart cart) {
+    public Account(String username, String password, Cart cart) {
         this.username = username;
         this.password = password;
-        this.wishlist = wishlist;
         this.cart = cart;
     }
 
