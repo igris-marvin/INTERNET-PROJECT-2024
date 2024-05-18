@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                     .loginPage("/login")
                     .successHandler(new AuthenticationSuccessHandler())
                     .permitAll();
-            })
+        })
             .build();
  	}
 

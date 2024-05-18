@@ -397,7 +397,6 @@ public class AdminService {
         try {
             image = file.getBytes();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             System.err.println(e.getMessage());
             return false;
         }

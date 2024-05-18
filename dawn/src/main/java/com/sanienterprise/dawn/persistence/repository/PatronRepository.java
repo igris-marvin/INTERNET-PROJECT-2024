@@ -25,4 +25,10 @@ public interface PatronRepository extends JpaRepository<Patron, Integer> {
     public Patron findPatronByUsername (
         @Param("username") String username
     );
+
+    @Transactional
+    @Query("SELECT i FROM Patron i WHERE i.fk_account_id = :acc_id")
+    public Patron findPatronByAccountId(
+        @Param("acc_id") Integer acc_id
+    );
 }

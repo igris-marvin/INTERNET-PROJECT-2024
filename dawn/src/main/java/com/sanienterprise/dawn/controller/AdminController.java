@@ -22,7 +22,6 @@ import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.dto.RegisterAdminDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
-import com.sanienterprise.dawn.persistence.entity.Admin;
 
 @Controller
 @RequestMapping("/admin")
