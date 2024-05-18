@@ -36,9 +36,9 @@ public class SecurityConfiguration {
                 t.requestMatchers("/").permitAll();
                 t.requestMatchers("/images/**").permitAll(); //for accessing static images
                 t.requestMatchers("/browse/**").permitAll();
-                t.requestMatchers("/signup/**").permitAll();
-                t.requestMatchers("/category/**").permitAll();
                 t.requestMatchers("/home/**").permitAll();
+                t.requestMatchers("/signup/**").permitAll();
+                t.requestMatchers("/shop/**").permitAll();
                 t.requestMatchers("/user/**").hasRole("CUSTOMER");
                 t.requestMatchers("/admin/**").hasRole("ADMIN");
                 t.anyRequest().authenticated();

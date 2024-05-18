@@ -4,25 +4,19 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sanienterprise.dawn.SecurityConfiguration;
 import com.sanienterprise.dawn.api.dto.SignUpDTO;
 import com.sanienterprise.dawn.persistence.entity.Account;
-import com.sanienterprise.dawn.persistence.entity.Admin;
 import com.sanienterprise.dawn.persistence.entity.Cart;
 import com.sanienterprise.dawn.persistence.entity.Customer;
 import com.sanienterprise.dawn.persistence.entity.Patron;
-import com.sanienterprise.dawn.persistence.entity.Product;
-import com.sanienterprise.dawn.persistence.repository.AccountRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
 
 @Service
