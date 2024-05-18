@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sanienterprise.dawn.persistence.entity.Account;
 import com.sanienterprise.dawn.persistence.entity.Patron;
 
 @Primary
@@ -24,11 +25,5 @@ public interface PatronRepository extends JpaRepository<Patron, Integer> {
     @Query("SELECT i FROM Patron i WHERE i.admin_username = :username")
     public Patron findPatronByUsername (
         @Param("username") String username
-    );
-
-    @Transactional
-    @Query("SELECT i FROM Patron i WHERE i.fk_account_id = :acc_id")
-    public Patron findPatronByAccountId(
-        @Param("acc_id") Integer acc_id
     );
 }

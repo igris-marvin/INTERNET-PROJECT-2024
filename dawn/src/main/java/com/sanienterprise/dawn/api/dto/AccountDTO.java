@@ -13,4 +13,5 @@ public class AccountDTO {
     private String surname;
     private String email;
     private String contact;
+    private String image;
 }
