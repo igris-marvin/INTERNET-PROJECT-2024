@@ -61,8 +61,8 @@
                 <th>Action</th>
             </tr>
             <tr th:each="x : ${prods}">
-                <td>
-                    <img th:src="${x.product_image}" />
+                <td style="width: 100px; height: 100px;" >
+                    <img th:src="${x.product_image}" style="width: 100px; height: 100px;" />
                 </td>
                 <td th:text="${x.product_title}">NAME</td>
                 <td th:text="${x.product_status}">STATUS</td>
