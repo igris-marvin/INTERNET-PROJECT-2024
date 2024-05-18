@@ -70,10 +70,10 @@
                 <td><b>R</b><span th:text="${x.product_price}">PRICE</span></td>
                 <td>
                     <div class="row">
-                        <a th:href="@{/shop/view(id=${product_id})}"><span class="btn btn-info" style="margin-bottom: 10px;">View Product</span></a>
-                    </div>
-                    <div class="row">
-                        <a th:href="@{/shop/add(id=${product_id})}" target="_blank"><span class="btn btn-dark">Add to cart</span></a>
+                      <form th:action="@{/user/add}" method="POST">
+                        <input type="hidden" name="p_id" th:value="${x.product_id}"/>
+                        <input class="btn btn-dark" type="submit" value="Add to cart"/>
+                      </form>
                     </div>
                 </td>
             </tr>

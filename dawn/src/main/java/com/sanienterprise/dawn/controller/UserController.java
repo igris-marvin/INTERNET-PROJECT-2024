@@ -41,7 +41,7 @@ public class UserController {
         @RequestParam("email") String email,
         @RequestParam("contact") String contact
     ) {
-
+        //UPDATE FIELDS
 
         return "";
     }
@@ -49,6 +49,15 @@ public class UserController {
         //UPDATE ADDRESS
 
     //CART
+    @PostMapping("/add")
+    public String addProduct(
+        @RequestParam("p_id") Integer p_id
+    ) {
+        useServ.addToCart(p_id);
+
+        return "redirect:/shop/category";
+    }
+
         //ADD TO CART
         //REMOVE FROM CART
         //ORDER
