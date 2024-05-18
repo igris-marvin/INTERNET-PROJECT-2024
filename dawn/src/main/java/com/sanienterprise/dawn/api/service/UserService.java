@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.sanienterprise.dawn.api.dto.AccountDTO;
 import com.sanienterprise.dawn.persistence.entity.Account;
+import com.sanienterprise.dawn.persistence.entity.Cart;
 import com.sanienterprise.dawn.persistence.entity.Customer;
 import com.sanienterprise.dawn.persistence.entity.Patron;
+import com.sanienterprise.dawn.persistence.entity.Product;
 import com.sanienterprise.dawn.persistence.repository.AccountRepository;
 import com.sanienterprise.dawn.persistence.repository.PatronRepository;
+import com.sanienterprise.dawn.persistence.repository.ProductRepository;
 
 @Service
 public class UserService {
@@ -23,6 +26,9 @@ public class UserService {
 
     @Autowired
     private AccountRepository accRepo;
+
+    @Autowired
+    private ProductRepository proRepo;
 
     public AccountDTO getUSerDetails() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -50,5 +56,30 @@ public class UserService {
         }
 
         return null;
+    }
+
+    public void addToCart(Integer id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+
+        System.out.println(username);
+
+        Account account = accRepo.findByUsername(username);
+        Product product = proRepo.findById(id).get();
+
+        Cart cart = account.getCart();
+
+        List<Product> list = cart.getProducts();
+
+        list.add(product);
+
+        cart.setProducts(list);
+
+        account.setCart(cart);
+
+        account.setCart(cart);
+
+        accRepo.save(account);
+
     }
 }
