@@ -56,7 +56,7 @@
                 <form>
                     <fieldset id="UserDetails">
                         <div class="text-center mb-4">
-                            <img src="profile-picture-url.jpg" alt="Profile Picture" class="rounded-circle" style="width: 100px; height: 100px;">
+                            <img th:src="${acc.image}" alt="Profile Picture" class="rounded-circle" style="width: 200px; height: 200px;">
                             <h2 class="text-center text-warning">Account</h2>
                         </div>
         
@@ -74,13 +74,21 @@
                             <input type="email" name="email" th:value="${acc.email}" class="form-control" placeholder="example@easymail.com">
         
                             <label class="form-label text-light">Contact Number: </label>
-                            <!-- <input type="text" name="contact" th:value="${acc.contact}" class="form-control" placeholder="0110110110"> -->
+                            <input type="text" name="contact" th:value="${acc.contact}" class="form-control" placeholder="0110110110">
                             <label class="form-label text-light">Upload new image: </label>
                             <input type="file" accept="image/*" mame="image_file" class="form-control" placeholder="example@easymail.com">
         
         
                             <label class="form-label text-light">Password: </label>
                             <input type="password" name="password" class="form-control" placeholder="Passsword encrypted">
+                        </div>
+
+                        <div class="container text-center">
+                          <div class="row">
+                            <div class="col"><span class="btn btn-dark ">Back</span></div>
+                            <div class="col"><span class="btn btn-"></span></div>
+                            <div class="col"></div>
+                          </div>
                         </div>
         
                         

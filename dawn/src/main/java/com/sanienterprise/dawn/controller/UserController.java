@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sanienterprise.dawn.api.dto.AccountDTO;
 import com.sanienterprise.dawn.api.service.UserService;
 import com.sanienterprise.dawn.persistence.entity.Customer;
 
@@ -23,7 +24,7 @@ public class UserController {
     public String getAccount(
         Model model
     ) {
-        Customer acc = useServ.getUSerDetails();
+        AccountDTO acc = useServ.getUSerDetails();
 
         System.out.println(acc.toString());
 
