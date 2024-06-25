@@ -1,4 +1,4 @@
-Developing an e-commerce CMS Web Application called 'Sani-Enterprise'
+Developing an e-commerce CMS Web Application called 'Sani-Enterprise', catalog website for selling furniture
 
 Customers are able to create and manage their own accounts
 Customers age and gender are determined from their ID
@@ -15,7 +15,7 @@ IDE: Integrated Development Environment
   > Virtual Studio Code
 
 Framework
-  > Spring Boot Framework
+  > Spring Boot 3 Framework
 
 Programming Languages
   > Java
