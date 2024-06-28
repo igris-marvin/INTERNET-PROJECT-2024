@@ -1,1 +1,0 @@
-# This folder is for controllers, you may know them as ServLets from Java EE
