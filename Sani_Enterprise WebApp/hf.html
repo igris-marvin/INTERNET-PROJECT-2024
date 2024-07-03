@@ -1,0 +1,106 @@
+<nav class="navbar sticky-top navbar-expand-sm" style= "background-color: #47524e";>
+    <div class="container">
+      <a class="navbar-brand fw-bold font-monospace">Sani Enterprise</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contect Us</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Cart</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav> 
+
+  <nav class="navbar sticky-top navbar-expand-sm" style= "background-color: #47524e";>
+    <div class="container">
+      <a class="navbar-brand fw-bold font-monospace text-warning">Sani Enterprise</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contect Us</a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Cart</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Locator</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Google Maps API (replace YOUR_API_KEY with your actual API key) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <style>
+        /* Style the map container */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Store Locator</h1>
+        <div id="map"></div>
+    </div>
+
+    <script>
+        // Initialize Google Map
+        function initMap() {
+            const storeLocation = { lat: 40.7128, lng: -74.0060 }; // Example coordinates (New York City)
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: storeLocation,
+                zoom: 12
+            });
+
+            // Add a marker for the store
+            const marker = new google.maps.Marker({
+                position: storeLocation,
+                map: map,
+                title: 'Our Store'
+            });
+        }
+    </script>
+    <!-- Load the map after the page loads -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>

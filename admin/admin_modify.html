@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Sani Enterprise update</title>
+        <style>
+            Body {
+                Background-color: #6c8491;
+                Background-image: url('C:\Sani Enterprise\sanibg.jpg');
+                Background-size: cover;
+                Background-position: center;
+                Height: 100vh;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <h2 class="text-info"><b>Sani Enterprise Update product</b></h2>
+            <form class="form-horizontal" action="/action_page.php">
+                <div class="form-group">
+                  <label class="control-label col-sm-2 " for="id">Product ID:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="id" placeholder="ID" name="id" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="name">Product Name:</label>
+                  <div class="col-sm-10">          
+                    <input type="text" class="form-control" id="name" placeholder="Enter product name" name="pwd">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="desc">Product Description:</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="desc" placeholder="Enter description" name="desc">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="price">Product Price:</label>
+                    <div class="col-sm-10">          
+                      <input type="text" class="form-control" id="price" placeholder="Enter product price" name="price">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="quantity">Quantity:</label>
+                    <div class="col-sm-10">
+                      <input type="quantity" class="form-control" id="quantity" placeholder="Enter Quantity" name="quantity">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="style">Product Style:</label>
+                    <div class="col-sm-10">          
+                      <input type="text" class="form-control" id="style" placeholder="Enter product style" name="style">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="width">Product Width:</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="width" placeholder="Enter width" name="width">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="height">Product Height:</label>
+                    <div class="col-sm-10">          
+                      <input type="number" class="form-control" id="height" placeholder="Enter product height" name="height">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="length">Product Length:</label>
+                    <div class="col-sm-10">
+                      <input type="length" class="form-control" id="length" placeholder="Enter length" name="length">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="status">Product Status:</label>
+                    <div class="col-sm-10">          
+                      <select class="form-control" title="select" name="status">
+                        <option value ="true">Available</option>
+                        <option value ="false">Unavailable</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="category">Product Category:</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" title="select" name="category">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-2" for="pic">Product Image:</label>
+                    <div class="col-sm-10">          
+                      <input type="file" class="form-control" id="pic"  name="pic" multiple>
+                    </div>
+                  </div>
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    
+                    <button type="submit" class="btn btn-secondary"  ><b>Back</b></button>
+                    <button type="submit" class="btn btn-info"><b>Update</b></button> 
+                
+                  </div>
+                </div>
+              </form>
+          </div>
+    </body>
+</html>

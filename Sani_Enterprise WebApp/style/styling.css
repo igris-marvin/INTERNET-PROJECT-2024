@@ -1,0 +1,9 @@
+#homeBody {
+    background-image: url(../images/backgroundHome.jpg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+
+
+  }
