@@ -8,7 +8,9 @@
   <title>Login</title>
 </head>
 
-<body class="bg-dark">
+<body class="card text-bg-dark">
+  
+  
   <!--nav-->
   <nav class="navbar navbar-expand-lg" style= "background-color: #47524e" >
     <div class="container-fluid">
@@ -45,9 +47,12 @@
       </div>
     </div>
   </nav>
- 
+
+
+  <img th:src="@{/images/background-image.jpg}" class="d-flex w-100" alt="...">
+  <div class="card-img-overlay">
   <!--bodypage-->
-  <section class="container d-flex justify-content-center bg-dark my-5" >
+  <section class="container d-flex justify-content-center my-5" >
     <div class="p-4 m-4 border border-warning-subtle rounded " style="background-color: #47524e;">
 
       <form  th:action="@{/login}" method="POST">
@@ -70,9 +75,10 @@
       </form>
     </div>
   </section>
+  </div>
 
       <!--footer-->
-      <footer class="fixed-bottom text-center " style= "background-color: #3a3d3d">
+      <footer class="text-center " style= "background-color: #3a3d3d">
         <!-- Grid container -->
         <div class="container py-3 ">
           <!-- Section: Social media -->
