@@ -22,6 +22,8 @@ import com.sanienterprise.dawn.api.dto.ModifyProductDTO;
 import com.sanienterprise.dawn.api.dto.ProductDTO;
 import com.sanienterprise.dawn.api.dto.RegisterAdminDTO;
 import com.sanienterprise.dawn.api.service.AdminService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 @RequestMapping("/admin")
@@ -178,26 +180,21 @@ public class AdminController {
         return "user_dash";
     }
 
-    //search
+    //SEARCH
     @GetMapping("/search")
-    public String getSearch() {
-        return "search_dash";
-    }
-
-    @PostMapping("/search") 
-    public String posSearch(
-        Model model, 
-        @RequestParam("search_id") Integer id
+    public String getSearch(
+        @RequestParam("category") String category,
+        Model model
     ) {
-        ProductDTO product = admServ.getProductById(id);
-
-        model.addAttribute("product", product);
-        model.addAttribute("id", id);
+        List<ProductDTO> products = admServ.getProductsByCategory(category);
+        
+        model.addAttribute("products", products);
 
         return "search_dash";
     }
+    
 
-    //profile
+    //PROFILE
     @GetMapping("/profile")
     public String getProfile(
         Model model
@@ -212,38 +209,24 @@ public class AdminController {
         return "profile_dash";
     }
 
-    //register
+    //REGISTER
     @GetMapping("/register")
     public String getRegister(
         Model model
     ) {
         RegisterAdminDTO admin = new RegisterAdminDTO();
-        String val = "false";
 
         model.addAttribute("admin", admin);
-        model.addAttribute("val", val);
 
         return "register_admin_dash";
     }
 
     @PostMapping("/register")
     public String posRegister(
-        @ModelAttribute("admin") RegisterAdminDTO admin,
-        @ModelAttribute("val") String val,
-        @RequestParam("image_file") MultipartFile file,
-        Model model
+        @ModelAttribute("admin") RegisterAdminDTO dto,
+        @RequestParam("photo") MultipartFile file
     ) {
-        boolean flag = admServ.registerAdmin(admin, file);
-
-        if(!flag) {
-
-            val = "not_true";
-        } else {
-
-            val = "true";
-        }
-
-        model.addAttribute("val", val);
+        
         
         return "register_admin_dash";
     }

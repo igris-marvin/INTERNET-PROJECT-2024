@@ -407,4 +407,19 @@ public class AdminService {
 
         return true;
     }
+
+    public List<ProductDTO> getProductsByCategory(String category) {
+        List<ProductDTO> prods = new ArrayList<>();
+
+        List<Product> list = proRepo.findAll();
+
+        for (Product x : list) {
+            
+            if(x.getCategory().name().equalsIgnoreCase(category)) {
+                prods.add(genProductInfo(x));
+            }
+        }
+
+        return prods;
+    }
 }
